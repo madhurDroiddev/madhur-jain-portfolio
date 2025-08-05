@@ -38,8 +38,11 @@ class _HomeScreenState extends State<HomeScreen> {
     if (index < sections.length && sections[index].currentContext != null) {
       final RenderBox renderBox = sections[index].currentContext!.findRenderObject() as RenderBox;
       final position = renderBox.localToGlobal(Offset.zero);
+      final screenHeight = MediaQuery.of(context).size.height;
+      final offset = position.dy - (screenHeight * 0.1); // 10% from top
+      
       _scrollController.animateTo(
-        position.dy - 100,
+        offset.clamp(0.0, _scrollController.position.maxScrollExtent),
         duration: const Duration(milliseconds: 800),
         curve: Curves.easeInOut,
       );

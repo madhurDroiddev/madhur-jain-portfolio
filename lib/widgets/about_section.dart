@@ -16,6 +16,16 @@ class AboutSection extends StatelessWidget {
         horizontal: isDesktop ? 80 : isTablet ? 40 : 20,
         vertical: 60,
       ),
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
+            Theme.of(context).colorScheme.surface,
+            Theme.of(context).colorScheme.surface.withOpacity(0.8),
+          ],
+        ),
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

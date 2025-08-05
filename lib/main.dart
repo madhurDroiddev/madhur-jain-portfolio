@@ -23,17 +23,19 @@ class PortfolioApp extends StatelessWidget {
               primarySwatch: Colors.blue,
               useMaterial3: true,
               colorScheme: ColorScheme.fromSeed(
-                seedColor: const Color(0xFF2196F3),
+                seedColor: const Color(0xFF667eea),
                 brightness: Brightness.light,
               ),
+              scaffoldBackgroundColor: const Color(0xFFf8fafc),
             ),
             darkTheme: ThemeData(
               primarySwatch: Colors.blue,
               useMaterial3: true,
               colorScheme: ColorScheme.fromSeed(
-                seedColor: const Color(0xFF2196F3),
+                seedColor: const Color(0xFF667eea),
                 brightness: Brightness.dark,
               ),
+              scaffoldBackgroundColor: const Color(0xFF0f172a),
             ),
             themeMode: themeService.isDarkMode ? ThemeMode.dark : ThemeMode.light,
             home: const HomeScreen(),

@@ -23,9 +23,11 @@ class HeaderWidget extends StatelessWidget {
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [
-            Theme.of(context).colorScheme.primary,
-            Theme.of(context).colorScheme.primary.withOpacity(0.8),
+            const Color(0xFF667eea),
+            const Color(0xFF764ba2),
+            const Color(0xFFf093fb),
           ],
+          stops: const [0.0, 0.5, 1.0],
         ),
       ),
       child: Column(
