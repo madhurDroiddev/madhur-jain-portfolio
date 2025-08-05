@@ -22,7 +22,9 @@ dependencies:
   go_router: ^12.1.3
   
   # State Management
-  provider: ^6.1.1
+  flutter_bloc: ^8.1.3
+  equatable: ^2.0.5
+  get_it: ^7.6.4
   
   # HTTP & APIs
   http: ^1.1.0
