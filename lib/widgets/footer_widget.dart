@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class FooterWidget extends StatelessWidget {
   const FooterWidget({super.key});
@@ -31,21 +30,21 @@ class FooterWidget extends StatelessWidget {
             children: [
               _buildSocialLink(
                 context,
-                FontAwesomeIcons.github,
+                Icons.code,
                 'GitHub',
                 'https://github.com',
               ),
               const SizedBox(width: 24),
               _buildSocialLink(
                 context,
-                FontAwesomeIcons.linkedin,
+                Icons.work,
                 'LinkedIn',
                 'https://linkedin.com',
               ),
               const SizedBox(width: 24),
               _buildSocialLink(
                 context,
-                FontAwesomeIcons.envelope,
+                Icons.email,
                 'Email',
                 'mailto:madhur.jain1394@gmail.com',
               ),
@@ -112,7 +111,7 @@ class FooterWidget extends StatelessWidget {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            FaIcon(
+            Icon(
               icon,
               color: Theme.of(context).colorScheme.primary,
               size: 20,

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../models/portfolio_data.dart';
 
 class ContactSection extends StatelessWidget {
@@ -74,7 +73,7 @@ class ContactSection extends StatelessWidget {
                       const SizedBox(height: 24),
                       _buildContactItem(
                         context,
-                        FontAwesomeIcons.phone,
+                        Icons.phone,
                         'Phone',
                         PortfolioData.phone,
                         'tel:${PortfolioData.phone}',
@@ -82,7 +81,7 @@ class ContactSection extends StatelessWidget {
                       const SizedBox(height: 16),
                       _buildContactItem(
                         context,
-                        FontAwesomeIcons.envelope,
+                        Icons.email,
                         'Email',
                         PortfolioData.email,
                         'mailto:${PortfolioData.email}',
@@ -111,8 +110,8 @@ class ContactSection extends StatelessWidget {
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            FaIcon(
-                              FontAwesomeIcons.trophy,
+                            Icon(
+                              Icons.emoji_events,
                               color: Colors.white,
                               size: 20,
                             ),
@@ -151,7 +150,7 @@ class ContactSection extends StatelessWidget {
                 const SizedBox(height: 24),
                 _buildContactItem(
                   context,
-                  FontAwesomeIcons.phone,
+                  Icons.phone,
                   'Phone',
                   PortfolioData.phone,
                   'tel:${PortfolioData.phone}',
@@ -159,7 +158,7 @@ class ContactSection extends StatelessWidget {
                 const SizedBox(height: 16),
                 _buildContactItem(
                   context,
-                  FontAwesomeIcons.envelope,
+                  Icons.email,
                   'Email',
                   PortfolioData.email,
                   'mailto:${PortfolioData.email}',
@@ -180,8 +179,8 @@ class ContactSection extends StatelessWidget {
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      FaIcon(
-                        FontAwesomeIcons.trophy,
+                      Icon(
+                        Icons.emoji_events,
                         color: Colors.white,
                         size: 20,
                       ),
@@ -223,7 +222,7 @@ class ContactSection extends StatelessWidget {
                       await launchUrl(uri);
                     }
                   },
-                  icon: const FaIcon(FontAwesomeIcons.envelope, color: Colors.white),
+                  icon: const Icon(Icons.email, color: Colors.white),
                   label: const Text(
                     'Send Message',
                     style: TextStyle(color: Colors.white),
@@ -267,7 +266,7 @@ class ContactSection extends StatelessWidget {
         ),
         child: Row(
           children: [
-            FaIcon(
+            Icon(
               icon,
               color: Colors.white,
               size: 24,
