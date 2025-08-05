@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../core/constants/app_constants.dart';
+import '../../../../core/constants/app_constants.dart';
 import '../../domain/entities/skill.dart';
 
 class SkillsSection extends StatelessWidget {

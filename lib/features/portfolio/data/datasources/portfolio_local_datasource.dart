@@ -1,7 +1,7 @@
 import '../models/experience_model.dart';
 import '../models/skill_model.dart';
 import '../models/project_model.dart';
-import '../../../core/constants/app_constants.dart';
+import '../../../../core/constants/app_constants.dart';
 
 abstract class PortfolioLocalDataSource {
   Future<List<ExperienceModel>> getExperiences();
