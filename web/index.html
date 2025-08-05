@@ -25,15 +25,23 @@
   <!-- This script adds the flutter initialization JS code -->
   <script src="flutter.js" defer></script>
   <script>
-    // Check if Flutter is available
+    // Check if Flutter is available and handle missing files
     window.addEventListener('load', function() {
+      // Check if flutter.js loaded successfully
+      const flutterScript = document.querySelector('script[src="flutter.js"]');
+      if (!flutterScript) {
+        console.log('flutter.js script not found, showing fallback');
+        showFallbackContent();
+        return;
+      }
+      
       // Wait a bit for Flutter to load
       setTimeout(function() {
         if (typeof _flutter === 'undefined') {
           console.log('Flutter not loaded, showing fallback');
           showFallbackContent();
         }
-      }, 2000);
+      }, 3000);
     });
   </script>
   
@@ -185,13 +193,17 @@
             <div class="loading-title">Madhur Jain</div>
             <div class="loading-subtitle">Mobile Application Developer</div>
             <div style="margin-top: 20px;">
-              <p style="margin-bottom: 15px;">Loading portfolio...</p>
-              <a href="static/" style="color: white; text-decoration: underline; padding: 10px 20px; border: 1px solid white; border-radius: 5px;">
-                View Static Version
+              <p style="margin-bottom: 15px;">Flutter app not available, redirecting to fallback...</p>
+              <a href="fallback.html" style="color: white; text-decoration: underline; padding: 10px 20px; border: 1px solid white; border-radius: 5px;">
+                View Fallback Version
               </a>
             </div>
           </div>
         `;
+        // Auto-redirect to fallback after 2 seconds
+        setTimeout(() => {
+          window.location.href = 'fallback.html';
+        }, 2000);
       }
     }
   </script>

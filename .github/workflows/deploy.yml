@@ -45,6 +45,13 @@ jobs:
         ls -la build/web/
         echo "Checking if main.dart.js exists..."
         ls -la build/web/ | grep -E "(flutter|main|index)"
+        echo "Checking Flutter version..."
+        flutter --version
+        echo "Cleaning and rebuilding..."
+        flutter clean
+        flutter build web --release
+        echo "Final check after rebuild..."
+        ls -la build/web/
     
     - name: Setup Pages
       uses: actions/configure-pages@v4
