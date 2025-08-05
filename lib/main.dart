@@ -21,7 +21,6 @@ class PortfolioApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             theme: ThemeData(
               primarySwatch: Colors.blue,
-              fontFamily: 'Poppins',
               useMaterial3: true,
               colorScheme: ColorScheme.fromSeed(
                 seedColor: const Color(0xFF2196F3),
@@ -30,7 +29,6 @@ class PortfolioApp extends StatelessWidget {
             ),
             darkTheme: ThemeData(
               primarySwatch: Colors.blue,
-              fontFamily: 'Poppins',
               useMaterial3: true,
               colorScheme: ColorScheme.fromSeed(
                 seedColor: const Color(0xFF2196F3),
