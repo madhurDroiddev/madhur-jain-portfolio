@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../models/portfolio_data.dart';
 
 class HeaderWidget extends StatelessWidget {
@@ -97,14 +98,14 @@ class HeaderWidget extends StatelessWidget {
                         children: [
                           _buildContactButton(
                             context,
-                            Icons.phone,
+                            FontAwesomeIcons.phone,
                             PortfolioData.phone,
                             'tel:${PortfolioData.phone}',
                           ),
                           const SizedBox(width: 16),
                           _buildContactButton(
                             context,
-                            Icons.email,
+                            FontAwesomeIcons.envelope,
                             PortfolioData.email,
                             'mailto:${PortfolioData.email}',
                           ),
@@ -182,14 +183,14 @@ class HeaderWidget extends StatelessWidget {
                   children: [
                     _buildContactButton(
                       context,
-                      Icons.phone,
+                      FontAwesomeIcons.phone,
                       PortfolioData.phone,
                       'tel:${PortfolioData.phone}',
                     ),
                     const SizedBox(width: 16),
                     _buildContactButton(
                       context,
-                      Icons.email,
+                      FontAwesomeIcons.envelope,
                       PortfolioData.email,
                       'mailto:${PortfolioData.email}',
                     ),
@@ -215,7 +216,7 @@ class HeaderWidget extends StatelessWidget {
           await launchUrl(uri);
         }
       },
-      icon: Icon(icon, color: Colors.white),
+      icon: FaIcon(icon, color: Colors.white),
       label: Text(
         text,
         style: const TextStyle(color: Colors.white),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_framework/responsive_framework.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../models/portfolio_data.dart';
 
 class AboutSection extends StatelessWidget {
@@ -92,8 +93,8 @@ class AboutSection extends StatelessWidget {
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Icon(
-                              Icons.school,
+                            FaIcon(
+                              FontAwesomeIcons.graduationCap,
                               color: Theme.of(context).colorScheme.primary,
                               size: 20,
                             ),
@@ -154,8 +155,8 @@ class AboutSection extends StatelessWidget {
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Icon(
-                        Icons.school,
+                      FaIcon(
+                        FontAwesomeIcons.graduationCap,
                         color: Theme.of(context).colorScheme.primary,
                         size: 20,
                       ),

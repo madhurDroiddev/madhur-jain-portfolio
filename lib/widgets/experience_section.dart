@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_framework/responsive_framework.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../models/portfolio_data.dart';
 
 class ExperienceSection extends StatelessWidget {
@@ -183,11 +184,11 @@ class ExperienceSection extends StatelessWidget {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Icon(
-                    Icons.check_circle,
-                    color: Theme.of(context).colorScheme.primary,
-                    size: 16,
-                  ),
+                                               FaIcon(
+                               FontAwesomeIcons.checkCircle,
+                               color: Theme.of(context).colorScheme.primary,
+                               size: 16,
+                             ),
                   const SizedBox(width: 8),
                   Expanded(
                     child: Text(
