@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flutter Web Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .container {
+            text-align: center;
+            padding: 40px;
+        }
+        .btn {
+            display: inline-block;
+            margin: 10px;
+            padding: 12px 24px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            border: 1px solid rgba(255,255,255,0.3);
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Flutter Web Test</h1>
+        <p>If you can see this, the web directory is accessible.</p>
+        <div>
+            <a href="index.html" class="btn">Try Flutter App</a>
+            <a href="../static/" class="btn">View Static Version</a>
+            <a href="../" class="btn">Go Back to Root</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -25,6 +25,18 @@
   </script>
   <!-- This script adds the flutter initialization JS code -->
   <script src="flutter.js" defer></script>
+  <script>
+    // Check if Flutter is available
+    window.addEventListener('load', function() {
+      // Wait a bit for Flutter to load
+      setTimeout(function() {
+        if (typeof _flutter === 'undefined') {
+          console.log('Flutter not loaded, showing fallback');
+          showFallbackContent();
+        }
+      }, 2000);
+    });
+  </script>
   
   <!-- SEO Meta Tags -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -125,24 +137,30 @@
         }
       }, 10000); // 10 seconds timeout
 
-      // Download main.dart.js
-      _flutter.loader.loadEntrypoint({
-        serviceWorker: {
-          serviceWorkerVersion: serviceWorkerVersion,
-        },
-        onEntrypointLoaded: function(engineInitializer) {
-          engineInitializer.initializeEngine().then(function(appRunner) {
-            appRunner.runApp();
-          }).catch(function(error) {
-            console.error('Flutter engine initialization failed:', error);
+      // Check if Flutter is available before trying to use it
+      if (typeof _flutter !== 'undefined') {
+        // Download main.dart.js
+        _flutter.loader.loadEntrypoint({
+          serviceWorker: {
+            serviceWorkerVersion: serviceWorkerVersion,
+          },
+          onEntrypointLoaded: function(engineInitializer) {
+            engineInitializer.initializeEngine().then(function(appRunner) {
+              appRunner.runApp();
+            }).catch(function(error) {
+              console.error('Flutter engine initialization failed:', error);
+              showFallbackContent();
+            });
+          },
+          onEntrypointLoadError: function(error) {
+            console.error('Flutter entrypoint load failed:', error);
             showFallbackContent();
-          });
-        },
-        onEntrypointLoadError: function(error) {
-          console.error('Flutter entrypoint load failed:', error);
-          showFallbackContent();
-        }
-      });
+          }
+        });
+      } else {
+        console.log('Flutter not available, showing fallback immediately');
+        showFallbackContent();
+      }
     });
     
     // Hide loading screen when Flutter app is ready
