@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../../core/constants/app_constants.dart';
 
@@ -9,9 +10,8 @@ class ContactSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-    final isDesktop = screenWidth > AppConstants.desktopBreakpoint;
-    final isTablet = screenWidth > AppConstants.mobileBreakpoint && screenWidth <= AppConstants.tabletBreakpoint;
+    final isDesktop = ResponsiveWrapper.of(context).isDesktop;
+    final isTablet = ResponsiveWrapper.of(context).isTablet;
 
     return Container(
       width: double.infinity,

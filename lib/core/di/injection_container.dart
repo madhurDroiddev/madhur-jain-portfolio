@@ -33,11 +33,11 @@ Future<void> init() async {
 
   // Repository
   sl.registerLazySingleton<PortfolioRepository>(
-    () => PortfolioRepositoryImpl(localDataSource: sl()),
+    () => PortfolioRepositoryImpl(sl()),
   );
   
   sl.registerLazySingleton<ThemeRepository>(
-    () => ThemeRepositoryImpl(localDataSource: sl()),
+    () => ThemeRepositoryImpl(sl()),
   );
 
   // Data sources

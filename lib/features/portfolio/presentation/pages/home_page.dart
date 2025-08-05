@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../../core/constants/app_constants.dart';
 import '../bloc/portfolio_bloc.dart';
@@ -56,10 +57,9 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-    final isDesktop = screenWidth > AppConstants.desktopBreakpoint;
-    final isTablet = screenWidth > AppConstants.mobileBreakpoint && screenWidth <= AppConstants.tabletBreakpoint;
-    final isMobile = screenWidth <= AppConstants.mobileBreakpoint;
+    final isDesktop = ResponsiveWrapper.of(context).isDesktop;
+    final isTablet = ResponsiveWrapper.of(context).isTablet;
+    final isMobile = ResponsiveWrapper.of(context).isMobile;
 
     return Scaffold(
       appBar: isDesktop ? null : AppBar(

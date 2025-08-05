@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 import 'core/constants/app_constants.dart';
 import 'core/di/injection_container.dart' as di;
 import 'features/portfolio/presentation/bloc/portfolio_bloc.dart';
@@ -27,6 +28,18 @@ class PortfolioApp extends StatelessWidget {
           return MaterialApp(
             title: AppConstants.appName,
             debugShowCheckedModeBanner: false,
+            builder: (context, child) => ResponsiveWrapper.builder(
+              child,
+              maxWidth: 1200,
+              minWidth: 480,
+              defaultScale: true,
+              breakpoints: [
+                const ResponsiveBreakpoint.resize(480, name: MOBILE),
+                const ResponsiveBreakpoint.resize(800, name: TABLET),
+                const ResponsiveBreakpoint.resize(1000, name: DESKTOP),
+                const ResponsiveBreakpoint.autoScale(1200, name: "4K"),
+              ],
+            ),
             theme: ThemeData(
               primarySwatch: Colors.blue,
               useMaterial3: true,
