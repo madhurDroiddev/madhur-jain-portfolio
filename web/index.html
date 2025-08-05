@@ -119,7 +119,17 @@
   </div>
   
   <script>
+    let flutterAppLoaded = false;
+    let fallbackTimeout;
+
     window.addEventListener('load', function(ev) {
+      // Set a timeout for Flutter to load
+      fallbackTimeout = setTimeout(() => {
+        if (!flutterAppLoaded) {
+          showFallbackContent();
+        }
+      }, 10000); // 10 seconds timeout
+
       // Download main.dart.js
       _flutter.loader.loadEntrypoint({
         serviceWorker: {
@@ -128,13 +138,22 @@
         onEntrypointLoaded: function(engineInitializer) {
           engineInitializer.initializeEngine().then(function(appRunner) {
             appRunner.runApp();
+          }).catch(function(error) {
+            console.error('Flutter engine initialization failed:', error);
+            showFallbackContent();
           });
+        },
+        onEntrypointLoadError: function(error) {
+          console.error('Flutter entrypoint load failed:', error);
+          showFallbackContent();
         }
       });
     });
     
     // Hide loading screen when Flutter app is ready
     window.addEventListener('flutter-first-frame', function() {
+      flutterAppLoaded = true;
+      clearTimeout(fallbackTimeout);
       const loading = document.getElementById('loading');
       if (loading) {
         loading.style.opacity = '0';
@@ -144,6 +163,25 @@
         }, 500);
       }
     });
+
+    function showFallbackContent() {
+      const loading = document.getElementById('loading');
+      if (loading) {
+        loading.innerHTML = `
+          <div class="loading-content">
+            <div class="loading-indicator"></div>
+            <div class="loading-title">Madhur Jain</div>
+            <div class="loading-subtitle">Mobile Application Developer</div>
+            <div style="margin-top: 20px;">
+              <p style="margin-bottom: 15px;">Loading portfolio...</p>
+              <a href="static/" style="color: white; text-decoration: underline; padding: 10px 20px; border: 1px solid white; border-radius: 5px;">
+                View Static Version
+              </a>
+            </div>
+          </div>
+        `;
+      }
+    }
   </script>
 </body>
 </html>
