@@ -6,6 +6,15 @@ on:
   pull_request:
     branches: [ main, master ]
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -26,11 +35,39 @@ jobs:
       run: flutter pub get
     
     - name: Build web
-      run: flutter build web --release
+      run: flutter build web --release --verbose
     
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+    - name: Check build output
+      run: |
+        echo "Checking if build/web directory exists..."
+        ls -la build/
+        echo "Checking if flutter.js exists..."
+        ls -la build/web/
+        echo "Checking if main.dart.js exists..."
+        ls -la build/web/ | grep -E "(flutter|main|index)"
+        echo "Checking Flutter version..."
+        flutter --version
+        echo "Cleaning and rebuilding..."
+        flutter clean
+        flutter build web --release
+        echo "Final check after rebuild..."
+        ls -la build/web/
+    
+    - name: Setup Pages
+      uses: actions/configure-pages@v4
+    
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v3
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./build/web
+        path: './build/web'
+    
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <base href="$FLUTTER_BASE_HREF">
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
@@ -25,6 +24,26 @@
   </script>
   <!-- This script adds the flutter initialization JS code -->
   <script src="flutter.js" defer></script>
+  <script>
+    // Check if Flutter is available and handle missing files
+    window.addEventListener('load', function() {
+      // Check if flutter.js loaded successfully
+      const flutterScript = document.querySelector('script[src="flutter.js"]');
+      if (!flutterScript) {
+        console.log('flutter.js script not found, showing fallback');
+        showFallbackContent();
+        return;
+      }
+      
+      // Wait a bit for Flutter to load
+      setTimeout(function() {
+        if (typeof _flutter === 'undefined') {
+          console.log('Flutter not loaded, showing fallback');
+          showFallbackContent();
+        }
+      }, 3000);
+    });
+  </script>
   
   <!-- SEO Meta Tags -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -37,11 +56,6 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Madhur Jain - Mobile Application Developer">
   <meta name="twitter:description" content="Senior Mobile App Developer with expertise in Native Android development and Flutter.">
-  
-  <!-- Preload fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   
   <style>
     /* Loading styles */
@@ -74,7 +88,7 @@
     body {
       margin: 0;
       padding: 0;
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Arial', sans-serif;
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       min-height: 100vh;
     }
@@ -119,22 +133,47 @@
   </div>
   
   <script>
+    let flutterAppLoaded = false;
+    let fallbackTimeout;
+
     window.addEventListener('load', function(ev) {
-      // Download main.dart.js
-      _flutter.loader.loadEntrypoint({
-        serviceWorker: {
-          serviceWorkerVersion: serviceWorkerVersion,
-        },
-        onEntrypointLoaded: function(engineInitializer) {
-          engineInitializer.initializeEngine().then(function(appRunner) {
-            appRunner.runApp();
-          });
+      // Set a timeout for Flutter to load
+      fallbackTimeout = setTimeout(() => {
+        if (!flutterAppLoaded) {
+          showFallbackContent();
         }
-      });
+      }, 10000); // 10 seconds timeout
+
+      // Check if Flutter is available before trying to use it
+      if (typeof _flutter !== 'undefined') {
+        // Download main.dart.js
+        _flutter.loader.loadEntrypoint({
+          serviceWorker: {
+            serviceWorkerVersion: serviceWorkerVersion,
+          },
+          onEntrypointLoaded: function(engineInitializer) {
+            engineInitializer.initializeEngine().then(function(appRunner) {
+              appRunner.runApp();
+            }).catch(function(error) {
+              console.error('Flutter engine initialization failed:', error);
+              showFallbackContent();
+            });
+          },
+          onEntrypointLoadError: function(error) {
+            console.error('Flutter entrypoint load failed:', error);
+            showFallbackContent();
+          }
+        });
+      } else {
+        console.log('Flutter not available, showing fallback immediately');
+        showFallbackContent();
+      }
     });
     
     // Hide loading screen when Flutter app is ready
     window.addEventListener('flutter-first-frame', function() {
+      flutterAppLoaded = true;
+      clearTimeout(fallbackTimeout);
       const loading = document.getElementById('loading');
       if (loading) {
         loading.style.opacity = '0';
@@ -144,6 +183,29 @@
         }, 500);
       }
     });
+
+    function showFallbackContent() {
+      const loading = document.getElementById('loading');
+      if (loading) {
+        loading.innerHTML = `
+          <div class="loading-content">
+            <div class="loading-indicator"></div>
+            <div class="loading-title">Madhur Jain</div>
+            <div class="loading-subtitle">Mobile Application Developer</div>
+            <div style="margin-top: 20px;">
+              <p style="margin-bottom: 15px;">Flutter app not available, redirecting to fallback...</p>
+              <a href="fallback.html" style="color: white; text-decoration: underline; padding: 10px 20px; border: 1px solid white; border-radius: 5px;">
+                View Fallback Version
+              </a>
+            </div>
+          </div>
+        `;
+        // Auto-redirect to fallback after 2 seconds
+        setTimeout(() => {
+          window.location.href = 'fallback.html';
+        }, 2000);
+      }
+    }
   </script>
 </body>
 </html>

@@ -100,7 +100,11 @@ portfolio_app/
 └── pubspec.yaml                 # Dependencies
 ```
 
-## 🌐 Deployment
+## 🌐 Live Portfolio
+
+**🔗 [View Live Portfolio](https://madhurDroiddev.github.io/madhur-jain-portfolio)**
+
+Your Flutter portfolio is now live and accessible at the link above!
 
 ### GitHub Pages Deployment
 
@@ -202,7 +206,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **Email**: madhur.jain1394@gmail.com
 - **LinkedIn**: [Madhur Jain](https://linkedin.com/in/madhurjain)
 - **GitHub**: [@madhurjain](https://github.com/madhurjain)
+- **Portfolio**: [Live Portfolio](https://madhurDroiddev.github.io/madhur-jain-portfolio)
 
 ---
+
+**🎉 Live Portfolio**: [https://madhurDroiddev.github.io/madhur-jain-portfolio](https://madhurDroiddev.github.io/madhur-jain-portfolio)
 
 Made with ❤️ and Flutter

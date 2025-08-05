@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:responsive_framework/responsive_framework.dart';
 import '../models/portfolio_data.dart';
 
 class AboutSection extends StatelessWidget {
@@ -7,14 +6,25 @@ class AboutSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDesktop = ResponsiveWrapper.of(context).isDesktop;
-    final isTablet = ResponsiveWrapper.of(context).isTablet;
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isDesktop = screenWidth > 1200;
+    final isTablet = screenWidth > 768 && screenWidth <= 1200;
 
     return Container(
       width: double.infinity,
       padding: EdgeInsets.symmetric(
         horizontal: isDesktop ? 80 : isTablet ? 40 : 20,
         vertical: 60,
+      ),
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
+            Theme.of(context).colorScheme.surface,
+            Theme.of(context).colorScheme.surface.withOpacity(0.8),
+          ],
+        ),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

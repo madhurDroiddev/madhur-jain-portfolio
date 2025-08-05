@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:responsive_framework/responsive_framework.dart';
 import 'package:provider/provider.dart';
 import '../services/theme_service.dart';
 import '../widgets/header_widget.dart';
@@ -39,8 +38,11 @@ class _HomeScreenState extends State<HomeScreen> {
     if (index < sections.length && sections[index].currentContext != null) {
       final RenderBox renderBox = sections[index].currentContext!.findRenderObject() as RenderBox;
       final position = renderBox.localToGlobal(Offset.zero);
+      final screenHeight = MediaQuery.of(context).size.height;
+      final offset = position.dy - (screenHeight * 0.1); // 10% from top
+      
       _scrollController.animateTo(
-        position.dy - 100,
+        offset.clamp(0.0, _scrollController.position.maxScrollExtent),
         duration: const Duration(milliseconds: 800),
         curve: Curves.easeInOut,
       );
@@ -55,9 +57,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final isDesktop = ResponsiveWrapper.of(context).isDesktop;
-    final isTablet = ResponsiveWrapper.of(context).isTablet;
-    final isMobile = ResponsiveWrapper.of(context).isMobile;
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isDesktop = screenWidth > 1200;
+    final isTablet = screenWidth > 768 && screenWidth <= 1200;
+    final isMobile = screenWidth <= 768;
 
     return Scaffold(
       appBar: isDesktop ? null : AppBar(

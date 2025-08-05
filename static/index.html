@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Madhur Jain - Mobile Application Developer</title>
+    <meta name="description" content="Madhur Jain - Senior Mobile Application Developer with expertise in Native Android Development and Flutter">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            font-size: 48px;
+            font-weight: bold;
+            color: #2196F3;
+        }
+        
+        .name {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .title {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+        
+        .subtitle {
+            font-size: 18px;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+        
+        .contact-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: background 0.3s;
+        }
+        
+        .btn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section:nth-child(even) {
+            background: #f8f9fa;
+        }
+        
+        .section-title {
+            font-size: 36px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 50px;
+            color: #2196F3;
+        }
+        
+        .experience-item {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .company {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2196F3;
+            margin-bottom: 8px;
+        }
+        
+        .position {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .duration {
+            color: #666;
+            margin-bottom: 16px;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .skill-category {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .skill-category h3 {
+            color: #2196F3;
+            margin-bottom: 20px;
+        }
+        
+        .skill-item {
+            margin-bottom: 15px;
+        }
+        
+        .skill-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .progress-bar {
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: #2196F3;
+            border-radius: 4px;
+        }
+        
+        .footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .name {
+                font-size: 32px;
+            }
+            
+            .title {
+                font-size: 18px;
+            }
+            
+            .contact-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="profile-img">MJ</div>
+            <h1 class="name">MADHUR JAIN</h1>
+            <h2 class="title">MOBILE APPLICATION DEVELOPER</h2>
+            <p class="subtitle">(NATIVE ANDROID DEVELOPER AND FLUTTER)</p>
+            <div class="contact-buttons">
+                <a href="tel:+91-8287567816" class="btn">📞 +91-8287567816</a>
+                <a href="mailto:madhur.jain1394@gmail.com" class="btn">📧 madhur.jain1394@gmail.com</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <p style="font-size: 18px; line-height: 1.8; margin-bottom: 40px;">
+                    Results-driven Senior Mobile App Developer with expertise in Native Android development and Flutter. 
+                    Skilled in designing and developing scalable cross-platform apps, optimizing code, and building reusable 
+                    components. Proven leadership in managing Flutter teams, maintaining production code, and delivering 
+                    high-quality solutions across banking, food delivery, and enterprise domains.
+                </p>
+                
+                <h3 style="color: #2196F3; margin-bottom: 20px;">Education</h3>
+                <ul style="text-align: left; max-width: 600px; margin: 0 auto;">
+                    <li style="margin-bottom: 10px;">Master of Computer Application (2014-2017) - Aligarh College of Engineering and Technology</li>
+                    <li style="margin-bottom: 10px;">Bachelor of Computer Application (2010-2013) - Institute of Information Management and Technology</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Professional Experience</h2>
+            
+            <div class="experience-item">
+                <div class="company">Cognizant</div>
+                <div class="position">Sr. Software Engineer</div>
+                <div class="duration">March 2025 - Present</div>
+                <p>Developing and maintaining scalable mobile applications using Native Android development and Flutter skills for enterprise and banking solutions. Staying updated with Mobile advancements and contributing to internal knowledge sharing and technical discussions.</p>
+            </div>
+            
+            <div class="experience-item">
+                <div class="company">Alternative Tech Lab Pvt Ltd</div>
+                <div class="position">Senior Mobile App Developer</div>
+                <div class="duration">July 2024 - March 2025</div>
+                <p>Leading the development of product-based mobile applications, including e-commerce and booking platforms. Advocating for clean architecture and test-driven development (TDD) principles, enhancing overall code quality.</p>
+            </div>
+            
+            <div class="experience-item">
+                <div class="company">Cognizant</div>
+                <div class="position">Associate Project</div>
+                <div class="duration">Aug 2021 - July 2024</div>
+                <p>Project 1: Personal Banking Application - Developed features from scratch, including remote cheque scanning, global search functionality, and multi-account management. Project 2: Corp. Banking Application - Feature development and task distribution across the team.</p>
+            </div>
+            
+            <div class="experience-item">
+                <div class="company">DLT Labs</div>
+                <div class="position">Mobile Application Developer</div>
+                <div class="duration">March 2021 - July 2021</div>
+                <p>Developed and maintained custom plugins to enhance application functionality and managed production code through efficient debugging. Engaged in Mobile App development discussions to stay current with best practices.</p>
+            </div>
+            
+            <div class="experience-item">
+                <div class="company">Ongraph Technology</div>
+                <div class="position">Mobile Application Developer</div>
+                <div class="duration">Nov 2017 - Feb 2021</div>
+                <p>Project 1: IoT-Based Application - Developed a Bluetooth-enabled application for device locking/unlocking functionality. Project 2: Enterprise Expense Management Application - Built an expense and report management application with GPS trip monitoring using Flutter.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Languages & Frameworks</h3>
+                    <div class="skill-item">
+                        <div class="skill-name">Java</div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 95%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">Kotlin</div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 90%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">Flutter</div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 95%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">Dart</div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 90%"></div></div>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Architecture & Testing</h3>
+                    <div class="skill-item">
+                        <div class="skill-name">Clean Architecture</div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 90%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">MVVM</div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 85%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">Unit Testing</div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 80%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">Widget Testing</div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 85%"></div></div>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>APIs & Databases</h3>
+                    <div class="skill-item">
+                        <div class="skill-name">REST APIs</div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 90%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">Firebase</div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 85%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">SQLite</div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 80%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">GraphQL</div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 70%"></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div style="text-align: center; max-width: 600px; margin: 0 auto;">
+                <h3 style="color: #2196F3; margin-bottom: 20px;">Contact Information</h3>
+                <p style="font-size: 18px; margin-bottom: 30px;">
+                    <strong>Phone:</strong> +91-8287567816<br>
+                    <strong>Email:</strong> madhur.jain1394@gmail.com
+                </p>
+                
+                <h3 style="color: #2196F3; margin-bottom: 20px;">Achievements</h3>
+                <ul style="text-align: left; list-style: none;">
+                    <li style="margin-bottom: 15px;">🏆 Super Node of the team - Ongraph Technology (AUG 2019)</li>
+                    <li style="margin-bottom: 15px;">🏆 Cognizant Cheers Award - Cognizant (July 2022)</li>
+                </ul>
+                
+                <div style="margin-top: 40px;">
+                    <a href="mailto:madhur.jain1394@gmail.com?subject=Portfolio Inquiry" class="btn" style="background: #2196F3; color: white; padding: 15px 30px; border-radius: 25px; text-decoration: none; font-weight: 600;">
+                        Send Message
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2024 Madhur Jain. All rights reserved.</p>
+            <p style="margin-top: 10px;">Made with ❤️ and Flutter</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:responsive_framework/responsive_framework.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class FooterWidget extends StatelessWidget {
   const FooterWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final isDesktop = ResponsiveWrapper.of(context).isDesktop;
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isDesktop = screenWidth > 1200;
 
     return Container(
       width: double.infinity,
@@ -32,14 +33,14 @@ class FooterWidget extends StatelessWidget {
                 context,
                 Icons.code,
                 'GitHub',
-                'https://github.com',
+                'https://github.com/madhurDroiddev',
               ),
               const SizedBox(width: 24),
               _buildSocialLink(
                 context,
                 Icons.work,
                 'LinkedIn',
-                'https://linkedin.com',
+                'https://linkedin.com/in/madhur-jain',
               ),
               const SizedBox(width: 24),
               _buildSocialLink(
@@ -99,8 +100,11 @@ class FooterWidget extends StatelessWidget {
     String url,
   ) {
     return InkWell(
-      onTap: () {
-        // Handle social link
+      onTap: () async {
+        final Uri uri = Uri.parse(url);
+        if (await canLaunchUrl(uri)) {
+          await launchUrl(uri, mode: LaunchMode.externalApplication);
+        }
       },
       child: Container(
         padding: const EdgeInsets.all(12),

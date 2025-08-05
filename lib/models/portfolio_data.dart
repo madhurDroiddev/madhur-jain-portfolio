@@ -5,7 +5,7 @@ class Experience {
   final String description;
   final List<String> achievements;
 
-  Experience({
+  const Experience({
     required this.company,
     required this.position,
     required this.duration,
@@ -19,7 +19,7 @@ class Skill {
   final String category;
   final double proficiency;
 
-  Skill({
+  const Skill({
     required this.name,
     required this.category,
     required this.proficiency,
@@ -32,7 +32,7 @@ class Project {
   final String technology;
   final String? link;
 
-  Project({
+  const Project({
     required this.name,
     required this.description,
     required this.technology,

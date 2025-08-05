@@ -15,14 +15,16 @@ dependencies:
     sdk: flutter
   
   # UI & Icons
-  flutter_icons: ^1.1.0
-  font_awesome_flutter: ^10.6.0
+  # font_awesome_flutter: ^10.4.0  # Removed due to compatibility issues
+  flutter_svg: ^2.0.9
   
   # Navigation
   go_router: ^12.1.3
   
   # State Management
-  provider: ^6.1.1
+  flutter_bloc: ^8.1.3
+  equatable: ^2.0.5
+  get_it: ^7.6.4
   
   # HTTP & APIs
   http: ^1.1.0
@@ -40,7 +42,7 @@ dependencies:
   device_info_plus: ^9.1.1
   
   # Responsive Design
-  responsive_framework: ^1.1.0
+  responsive_framework: ^1.5.1
 
 dev_dependencies:
   flutter_test:
@@ -50,17 +52,17 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   
-  assets:
-    - assets/images/
-    - assets/icons/
+  # assets:
+  #   - assets/images/
+  #   - assets/icons/
   
-  fonts:
-    - family: Poppins
-      fonts:
-        - asset: assets/fonts/Poppins-Regular.ttf
-        - asset: assets/fonts/Poppins-Medium.ttf
-          weight: 500
-        - asset: assets/fonts/Poppins-SemiBold.ttf
-          weight: 600
-        - asset: assets/fonts/Poppins-Bold.ttf
-          weight: 700
+  # fonts:
+  #   - family: Poppins
+  #     fonts:
+  #       - asset: assets/fonts/Poppins-Regular.ttf
+  #       - asset: assets/fonts/Poppins-Medium.ttf
+  #         weight: 500
+  #       - asset: assets/fonts/Poppins-SemiBold.ttf
+  #         weight: 600
+  #       - asset: assets/fonts/Poppins-Bold.ttf
+  #         weight: 700

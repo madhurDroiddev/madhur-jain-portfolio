@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:responsive_framework/responsive_framework.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../models/portfolio_data.dart';
 
@@ -8,9 +7,10 @@ class HeaderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDesktop = ResponsiveWrapper.of(context).isDesktop;
-    final isTablet = ResponsiveWrapper.of(context).isTablet;
-    final isMobile = ResponsiveWrapper.of(context).isMobile;
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isDesktop = screenWidth > 1200;
+    final isTablet = screenWidth > 768 && screenWidth <= 1200;
+    final isMobile = screenWidth <= 768;
 
     return Container(
       width: double.infinity,
@@ -23,9 +23,11 @@ class HeaderWidget extends StatelessWidget {
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [
-            Theme.of(context).colorScheme.primary,
-            Theme.of(context).colorScheme.primary.withOpacity(0.8),
+            const Color(0xFF667eea),
+            const Color(0xFF764ba2),
+            const Color(0xFFf093fb),
           ],
+          stops: const [0.0, 0.5, 1.0],
         ),
       ),
       child: Column(

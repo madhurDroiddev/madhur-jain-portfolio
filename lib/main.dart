@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:responsive_framework/responsive_framework.dart';
-import 'package:provider/provider.dart';
-import 'screens/home_screen.dart';
-import 'services/theme_service.dart';
+import 'core/constants/app_constants.dart';
+import 'core/di/injection_container.dart' as di;
+import 'features/portfolio/presentation/bloc/portfolio_bloc.dart';
+import 'features/theme/presentation/bloc/theme_bloc.dart';
+import 'features/portfolio/presentation/pages/home_page.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await di.init();
   runApp(const PortfolioApp());
 }
 
@@ -13,46 +18,50 @@ class PortfolioApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => ThemeService(),
-      child: Consumer<ThemeService>(
-        builder: (context, themeService, child) {
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (_) => di.sl<PortfolioBloc>()..add(LoadPortfolio())),
+        BlocProvider(create: (_) => di.sl<ThemeBloc>()..add(LoadTheme())),
+      ],
+      child: BlocBuilder<ThemeBloc, ThemeState>(
+        builder: (context, state) {
           return MaterialApp(
-            title: 'Madhur Jain - Portfolio',
+            title: AppConstants.appName,
             debugShowCheckedModeBanner: false,
-            theme: ThemeData(
-              primarySwatch: Colors.blue,
-              fontFamily: 'Poppins',
-              useMaterial3: true,
-              colorScheme: ColorScheme.fromSeed(
-                seedColor: const Color(0xFF2196F3),
-                brightness: Brightness.light,
-              ),
-            ),
-            darkTheme: ThemeData(
-              primarySwatch: Colors.blue,
-              fontFamily: 'Poppins',
-              useMaterial3: true,
-              colorScheme: ColorScheme.fromSeed(
-                seedColor: const Color(0xFF2196F3),
-                brightness: Brightness.dark,
-              ),
-            ),
-            themeMode: themeService.isDarkMode ? ThemeMode.dark : ThemeMode.light,
             builder: (context, child) => ResponsiveWrapper.builder(
               child,
               maxWidth: 1200,
               minWidth: 480,
               defaultScale: true,
               breakpoints: [
-                const ResponsiveBreakpoint.resize(480, name: MOBILE),
-                const ResponsiveBreakpoint.autoScale(800, name: TABLET),
-                const ResponsiveBreakpoint.autoScale(1000, name: TABLET),
-                const ResponsiveBreakpoint.resize(1200, name: DESKTOP),
-                const ResponsiveBreakpoint.autoScale(2460, name: "4K"),
+                const Breakpoint(start: 0, end: 450, name: MOBILE),
+                const Breakpoint(start: 451, end: 800, name: TABLET),
+                const Breakpoint(start: 801, end: 1920, name: DESKTOP),
+                const Breakpoint(start: 1921, end: double.infinity, name: '4K'),
               ],
             ),
-            home: const HomeScreen(),
+            theme: ThemeData(
+              primarySwatch: Colors.blue,
+              useMaterial3: true,
+              colorScheme: ColorScheme.fromSeed(
+                seedColor: const Color(AppConstants.primaryColor),
+                brightness: Brightness.light,
+              ),
+              scaffoldBackgroundColor: const Color(0xFFf8fafc),
+            ),
+            darkTheme: ThemeData(
+              primarySwatch: Colors.blue,
+              useMaterial3: true,
+              colorScheme: ColorScheme.fromSeed(
+                seedColor: const Color(AppConstants.primaryColor),
+                brightness: Brightness.dark,
+              ),
+              scaffoldBackgroundColor: const Color(0xFF0f172a),
+            ),
+            themeMode: state is ThemeLoaded && state.theme.isDarkMode 
+                ? ThemeMode.dark 
+                : ThemeMode.light,
+            home: const HomePage(),
           );
         },
       ),

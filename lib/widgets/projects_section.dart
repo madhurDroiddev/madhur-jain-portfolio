@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:responsive_framework/responsive_framework.dart';
 import '../models/portfolio_data.dart';
 
 class ProjectsSection extends StatelessWidget {
@@ -7,8 +6,9 @@ class ProjectsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDesktop = ResponsiveWrapper.of(context).isDesktop;
-    final isTablet = ResponsiveWrapper.of(context).isTablet;
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isDesktop = screenWidth > 1200;
+    final isTablet = screenWidth > 768 && screenWidth <= 1200;
 
     return Container(
       width: double.infinity,
