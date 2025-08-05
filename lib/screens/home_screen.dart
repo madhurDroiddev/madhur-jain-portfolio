@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:responsive_framework/responsive_framework.dart';
 import 'package:provider/provider.dart';
 import '../services/theme_service.dart';
 import '../widgets/header_widget.dart';
@@ -55,9 +54,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final isDesktop = ResponsiveWrapper.of(context).isDesktop;
-    final isTablet = ResponsiveWrapper.of(context).isTablet;
-    final isMobile = ResponsiveWrapper.of(context).isMobile;
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isDesktop = screenWidth > 1200;
+    final isTablet = screenWidth > 768 && screenWidth <= 1200;
+    final isMobile = screenWidth <= 768;
 
     return Scaffold(
       appBar: isDesktop ? null : AppBar(
