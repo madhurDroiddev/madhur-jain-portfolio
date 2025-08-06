@@ -28,11 +28,8 @@ class PortfolioApp extends StatelessWidget {
           return MaterialApp(
             title: AppConstants.appName,
             debugShowCheckedModeBanner: false,
-            builder: (context, child) => ResponsiveWrapper.builder(
-              child,
-              maxWidth: 1200,
-              minWidth: 480,
-              defaultScale: true,
+            builder: (context, child) => ResponsiveBreakpoints.builder(
+              child : child,
               breakpoints: [
                 const Breakpoint(start: 0, end: 450, name: MOBILE),
                 const Breakpoint(start: 451, end: 800, name: TABLET),
