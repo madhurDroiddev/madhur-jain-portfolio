@@ -10,7 +10,7 @@ class FooterWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDesktop = ResponsiveWrapper.of(context).isDesktop;
+    final isDesktop = ResponsiveBreakpoints.of(context).isDesktop;
 
     return Container(
       width: double.infinity,

@@ -57,9 +57,9 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final isDesktop = ResponsiveWrapper.of(context).isDesktop;
-    final isTablet = ResponsiveWrapper.of(context).isTablet;
-    final isMobile = ResponsiveWrapper.of(context).isMobile;
+    final isDesktop = ResponsiveBreakpoints.of(context).isDesktop;
+    final isTablet = ResponsiveBreakpoints.of(context).isTablet;
+    final isMobile = ResponsiveBreakpoints.of(context).isMobile;
 
     return Scaffold(
       appBar: isDesktop ? null : AppBar(
