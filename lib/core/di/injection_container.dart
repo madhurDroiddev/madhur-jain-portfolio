@@ -11,6 +11,7 @@ import '../../features/theme/domain/usecases/get_theme.dart';
 import '../../features/theme/domain/usecases/set_theme.dart';
 import '../../features/theme/presentation/bloc/theme_bloc.dart';
 import '../../features/auth/data/firebase_auth_service.dart';
+import '../../features/portfolio/data/datasources/portfolio_remote_datasource.dart';
 
 final sl = GetIt.instance;
 
@@ -34,7 +35,7 @@ Future<void> init() async {
 
   // Repository
   sl.registerLazySingleton<PortfolioRepository>(
-    () => PortfolioRepositoryImpl(sl()),
+    () => PortfolioRepositoryImpl(sl(), sl()),
   );
   
   sl.registerLazySingleton<ThemeRepository>(
@@ -44,6 +45,9 @@ Future<void> init() async {
   // Data sources
   sl.registerLazySingleton<PortfolioLocalDataSource>(
     () => PortfolioLocalDataSourceImpl(),
+  );
+  sl.registerLazySingleton<PortfolioRemoteDataSource>(
+    () => PortfolioRemoteDataSourceImpl(),
   );
   
   sl.registerLazySingleton<ThemeLocalDataSource>(

@@ -3,57 +3,63 @@ import '../../domain/entities/experience.dart';
 import '../../domain/entities/skill.dart';
 import '../../domain/entities/project.dart';
 import '../datasources/portfolio_local_datasource.dart';
+import '../datasources/portfolio_remote_datasource.dart';
 
 class PortfolioRepositoryImpl implements PortfolioRepository {
   final PortfolioLocalDataSource localDataSource;
+  final PortfolioRemoteDataSource remoteDataSource;
 
-  PortfolioRepositoryImpl(this.localDataSource);
+  PortfolioRepositoryImpl(this.localDataSource, this.remoteDataSource);
 
   @override
   Future<List<Experience>> getExperiences() async {
     try {
-      final experiences = await localDataSource.getExperiences();
+      final experiences = await remoteDataSource.getExperiences();
       return experiences;
     } catch (e) {
-      throw Exception('Failed to load experiences: $e');
+      // Fallback to local static data
+      final fallback = await localDataSource.getExperiences();
+      return fallback;
     }
   }
 
   @override
   Future<List<Skill>> getSkills() async {
     try {
-      final skills = await localDataSource.getSkills();
+      final skills = await remoteDataSource.getSkills();
       return skills;
     } catch (e) {
-      throw Exception('Failed to load skills: $e');
+      final fallback = await localDataSource.getSkills();
+      return fallback;
     }
   }
 
   @override
   Future<List<Project>> getProjects() async {
     try {
-      final projects = await localDataSource.getProjects();
+      final projects = await remoteDataSource.getProjects();
       return projects;
     } catch (e) {
-      throw Exception('Failed to load projects: $e');
+      final fallback = await localDataSource.getProjects();
+      return fallback;
     }
   }
 
   @override
   Future<String> getSummary() async {
     try {
-      return await localDataSource.getSummary();
+      return await remoteDataSource.getSummary();
     } catch (e) {
-      throw Exception('Failed to load summary: $e');
+      return await localDataSource.getSummary();
     }
   }
 
   @override
   Future<Map<String, String>> getContactInfo() async {
     try {
-      return await localDataSource.getContactInfo();
+      return await remoteDataSource.getContactInfo();
     } catch (e) {
-      throw Exception('Failed to load contact info: $e');
+      return await localDataSource.getContactInfo();
     }
   }
 }
