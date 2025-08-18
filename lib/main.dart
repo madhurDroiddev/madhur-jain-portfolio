@@ -9,6 +9,7 @@ import 'core/di/injection_container.dart' as di;
 import 'features/portfolio/presentation/bloc/portfolio_bloc.dart';
 import 'features/theme/presentation/bloc/theme_bloc.dart';
 import 'features/portfolio/presentation/pages/home_page.dart';
+import 'features/portfolio/data/bootstrap/portfolio_bootstrap_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,6 +17,8 @@ void main() async {
   await di.init();
   // Firebase Anonymous Auth
   await di.sl<FirebaseAuthService>().signInAnonymouslyIfNeeded();
+  // Seed Firestore with dummy data if empty (idempotent)
+  await di.sl<PortfolioBootstrapService>().seedIfEmpty();
   runApp(const PortfolioApp());
 }
 
