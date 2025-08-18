@@ -161,6 +161,8 @@ Key dependencies in `pubspec.yaml`:
 - `url_launcher`: External links
 - `shared_preferences`: Local storage
 - `flutter_animate`: Animations
+- `firebase_core`: Firebase initialization for web hosting/features
+ - `firebase_auth`: Anonymous authentication (auto sign-in on startup)
 
 ### Web Configuration
 

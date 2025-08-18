@@ -10,6 +10,7 @@ import '../../features/theme/domain/repositories/theme_repository.dart';
 import '../../features/theme/domain/usecases/get_theme.dart';
 import '../../features/theme/domain/usecases/set_theme.dart';
 import '../../features/theme/presentation/bloc/theme_bloc.dart';
+import '../../features/auth/data/firebase_auth_service.dart';
 
 final sl = GetIt.instance;
 
@@ -48,4 +49,7 @@ Future<void> init() async {
   sl.registerLazySingleton<ThemeLocalDataSource>(
     () => ThemeLocalDataSourceImpl(),
   );
+
+  // Services
+  sl.registerLazySingleton<FirebaseAuthService>(() => FirebaseAuthService());
 }
