@@ -38,10 +38,9 @@ jobs:
         echo "Checking web build contents..."
         ls -la build/web/
     
-    - name: Setup Firebase CLI
-      uses: w9jds/firebase-action@master
+    - name: Deploy to Firebase Hosting
+      uses: w9jds/firebase-action@v14.1.1
       with:
-        args: deploy --only hosting
+        args: deploy --only hosting --project ${{ secrets.FIREBASE_PROJECT_ID }}
       env:
-        FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
-        FIREBASE_PROJECT_ID: ${{ secrets.FIREBASE_PROJECT_ID }}
+        GCP_SA_KEY: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}

@@ -68,6 +68,8 @@ In your GitHub repository:
    **FIREBASE_SERVICE_ACCOUNT**
    - Value: The entire content of the downloaded JSON file
 
+   The workflow maps `FIREBASE_SERVICE_ACCOUNT` to `GCP_SA_KEY` as required by the Firebase GitHub Action.
+
 ### 6. Test Local Deployment (Optional)
 
 ```bash
@@ -91,6 +93,8 @@ The workflow `.github/workflows/firebase-deploy.yml` will:
 1. **Build** your Flutter web app
 2. **Deploy** to Firebase Hosting automatically
 3. **Trigger** on every push to main/master branch
+
+Action used: `w9jds/firebase-action@v14.1.1` with `GCP_SA_KEY`.
 
 ## 🌐 Custom Domain (Optional)
 
