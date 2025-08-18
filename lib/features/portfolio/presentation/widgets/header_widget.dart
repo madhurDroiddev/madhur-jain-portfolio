@@ -53,15 +53,8 @@ class HeaderWidget extends StatelessWidget {
                       ),
                     ],
                   ),
-                  child: const Center(
-                    child: Text(
-                      'MJ',
-                      style: TextStyle(
-                        fontSize: 80,
-                        fontWeight: FontWeight.bold,
-                        color: Color(AppConstants.primaryColor),
-                      ),
-                    ),
+                  child: CircleAvatar(
+                     backgroundImage: AssetImage("assets/images/profile_pic.jpg",),
                   ),
                 ),
                 const SizedBox(width: 60),

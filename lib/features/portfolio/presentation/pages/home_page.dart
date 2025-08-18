@@ -145,14 +145,7 @@ class _HomePageState extends State<HomePage> {
                 CircleAvatar(
                   radius: 30,
                   backgroundColor: Colors.white,
-                  child: Text(
-                    'MJ',
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                      color: Color(AppConstants.primaryColor),
-                    ),
-                  ),
+                  backgroundImage: AssetImage("assets/images/profile_pic.jpg",),
                 ),
                 SizedBox(height: 12),
                 Text(
@@ -225,13 +218,8 @@ class _HomePageState extends State<HomePage> {
                 CircleAvatar(
                   radius: 50,
                   backgroundColor: const Color(AppConstants.primaryColor),
-                  child: const Text(
-                    'MJ',
-                    style: TextStyle(
-                      fontSize: 32,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
+                  backgroundImage: AssetImage(
+                    "assets/images/profile_pic.jpg",
                   ),
                 ),
                 const SizedBox(height: 16),
