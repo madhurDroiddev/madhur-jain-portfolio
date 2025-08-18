@@ -164,6 +164,4 @@ After successful deployment:
 
 ---
 
-**Your Flutter portfolio will be live at**: `https://your-project-id.web.app`
-
-Replace `your-project-id` with your actual Firebase project ID!
+**Live site**: https://madhur-s-portfolio.web.app/

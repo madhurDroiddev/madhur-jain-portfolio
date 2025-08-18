@@ -1,5 +1,10 @@
 # Madhur Jain - Portfolio App
 
+[![Firebase Hosting](https://img.shields.io/badge/Firebase%20Hosting-Live-brightgreen?logo=firebase)](https://madhur-s-portfolio.web.app/)
+[![Firebase Deploy Workflow](https://github.com/madhurDroiddev/madhur-jain-portfolio/actions/workflows/firebase-deploy.yml/badge.svg?branch=main)](https://github.com/madhurDroiddev/madhur-jain-portfolio/actions/workflows/firebase-deploy.yml)
+
+Latest workflow runs: https://github.com/madhurDroiddev/madhur-jain-portfolio/actions/workflows/firebase-deploy.yml
+
 A modern, responsive Flutter portfolio application showcasing Madhur Jain's expertise in mobile application development. Built with Flutter for cross-platform support (iOS, Android, and Web).
 
 ## 🚀 Features
@@ -102,16 +107,9 @@ portfolio_app/
 
 ## 🌐 Live Portfolio
 
-**🔗 [View Live Portfolio](https://madhurDroiddev.github.io/madhur-jain-portfolio)**
+**🔗 [View Live Portfolio](https://madhur-s-portfolio.web.app/)**
 
-Your Flutter portfolio is now live and accessible at the link above!
-
-### GitHub Pages Deployment
-
-1. **Push to GitHub**: Push your code to a GitHub repository
-2. **Enable GitHub Pages**: Go to repository Settings > Pages
-3. **Set Source**: Select "GitHub Actions" as the source
-4. **Automatic Deployment**: The GitHub Actions workflow will automatically build and deploy on every push to main branch
+Hosted on Firebase Hosting with global CDN and HTTPS.
 
 ### Manual Deployment
 
@@ -202,21 +200,13 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🚀 Deployment
 
-### GitHub Pages (Current)
-- **Live Portfolio**: [https://madhurDroiddev.github.io/madhur-jain-portfolio](https://madhurDroiddev.github.io/madhur-jain-portfolio)
+### Firebase Hosting (Current)
+- **Live Portfolio**: https://madhur-s-portfolio.web.app/
 - **CI/CD**: GitHub Actions (`.github/workflows/deploy.yml`)
+- **Config files**: `firebase.json`, `.firebaserc`, `.github/workflows/firebase-deploy.yml`
 
-### Firebase Hosting (Recommended)
-For better performance and global CDN, deploy to Firebase Hosting:
-
-1. **Setup**: Follow [FIREBASE_DEPLOYMENT.md](FIREBASE_DEPLOYMENT.md)
-2. **Quick Start**: Run `./scripts/setup-firebase.sh`
-3. **Benefits**: Global CDN, HTTPS, better caching
-
-**Firebase Configuration Files**:
-- `firebase.json`: Hosting configuration
-- `.firebaserc`: Project settings
-- `.github/workflows/firebase-deploy.yml`: Firebase CI/CD
+### GitHub Pages (Legacy)
+Previously hosted at: https://madhurDroiddev.github.io/madhur-jain-portfolio
 
 ## 📞 Contact
 
@@ -224,10 +214,10 @@ For better performance and global CDN, deploy to Firebase Hosting:
 - **Email**: madhur.jain1394@gmail.com
 - **LinkedIn**: [Madhur Jain](https://linkedin.com/in/madhurjain)
 - **GitHub**: [@madhurjain](https://github.com/madhurjain)
-- **Portfolio**: [Live Portfolio](https://madhurDroiddev.github.io/madhur-jain-portfolio)
+- **Portfolio**: [Live Portfolio](https://madhur-s-portfolio.web.app/)
 
 ---
 
-**🎉 Live Portfolio**: [https://madhurDroiddev.github.io/madhur-jain-portfolio](https://madhurDroiddev.github.io/madhur-jain-portfolio)
+**🎉 Live Portfolio**: [https://madhur-s-portfolio.web.app/](https://madhur-s-portfolio.web.app/)
 
 Made with ❤️ and Flutter

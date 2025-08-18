@@ -2,12 +2,12 @@
 
 ## ✅ Successfully Deployed!
 
-**🌐 Live Portfolio URL**: [https://madhurDroiddev.github.io/madhur-jain-portfolio](https://madhurDroiddev.github.io/madhur-jain-portfolio)
+**🌐 Live Portfolio URL**: [https://madhur-s-portfolio.web.app/](https://madhur-s-portfolio.web.app/)
 
 ## 📊 Deployment Details
 
 - **Repository**: `madhurDroiddev/madhur-jain-portfolio`
-- **Platform**: GitHub Pages
+- **Platform**: Firebase Hosting
 - **Build System**: GitHub Actions
 - **Framework**: Flutter Web
 - **Deployment Date**: $(date)
@@ -42,8 +42,8 @@
 - **UI Framework**: Material Design 3
 - **State Management**: Provider
 - **Responsive**: Responsive Framework
-- **Deployment**: GitHub Actions + GitHub Pages
-- **Hosting**: GitHub Pages (Free)
+- **Deployment**: GitHub Actions + Firebase CLI
+- **Hosting**: Firebase Hosting
 
 ## 🔧 Maintenance
 
@@ -54,7 +54,7 @@
 
 ### Monitoring
 - **GitHub Actions**: https://github.com/madhurDroiddev/madhur-jain-portfolio/actions
-- **GitHub Pages Settings**: https://github.com/madhurDroiddev/madhur-jain-portfolio/settings/pages
+- **Firebase Hosting**: https://console.firebase.google.com/project/madhur-s-portfolio/hosting
 
 ## 📞 Contact Information
 
@@ -62,7 +62,7 @@
 - **Email**: madhur.jain1394@gmail.com
 - **LinkedIn**: [Madhur Jain](https://linkedin.com/in/madhurjain)
 - **GitHub**: [@madhurjain](https://github.com/madhurjain)
-- **Portfolio**: [Live Portfolio](https://madhurDroiddev.github.io/madhur-jain-portfolio)
+- **Portfolio**: [Live Portfolio](https://madhur-s-portfolio.web.app/)
 
 ---
 
