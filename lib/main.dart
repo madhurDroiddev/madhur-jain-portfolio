@@ -19,6 +19,7 @@ void main() async {
   await di.sl<FirebaseAuthService>().signInAnonymouslyIfNeeded();
   // Seed Firestore with dummy data if empty (idempotent)
   await di.sl<PortfolioBootstrapService>().seedIfEmpty();
+
   runApp(const PortfolioApp());
 }
 
