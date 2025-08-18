@@ -94,7 +94,7 @@ The workflow `.github/workflows/firebase-deploy.yml` will:
 2. **Deploy** to Firebase Hosting automatically
 3. **Trigger** on every push to main/master branch
 
-Action used: `w9jds/firebase-action@v14.1.1` with `GCP_SA_KEY`.
+The workflow installs the Firebase CLI directly and authenticates using `GOOGLE_APPLICATION_CREDENTIALS` that points to a service account JSON written from the `FIREBASE_SERVICE_ACCOUNT` secret.
 
 ## 🌐 Custom Domain (Optional)
 
