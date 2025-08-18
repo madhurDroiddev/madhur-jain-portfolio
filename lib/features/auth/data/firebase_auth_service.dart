@@ -6,16 +6,13 @@ class FirebaseAuthService {
   FirebaseAuthService({FirebaseAuth? firebaseAuth})
       : _firebaseAuth = firebaseAuth ?? FirebaseAuth.instance;
 
-  Future<UserCredential> signInAnonymouslyIfNeeded() async {
-    final User? currentUser = _firebaseAuth.currentUser;
-    if (currentUser != null) {
-      return UserCredential(
-        additionalUserInfo: null,
-        credential: null,
-        user: currentUser,
-      );
+  Future<User?> signInAnonymouslyIfNeeded() async {
+    final User? existingUser = _firebaseAuth.currentUser;
+    if (existingUser != null) {
+      return existingUser;
     }
-    return _firebaseAuth.signInAnonymously();
+    final UserCredential credential = await _firebaseAuth.signInAnonymously();
+    return credential.user;
   }
 
   User? get currentUser => _firebaseAuth.currentUser;
