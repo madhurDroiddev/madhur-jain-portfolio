@@ -200,6 +200,24 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Bluetooth Device Integration
 - Enterprise Applications
 
+## 🚀 Deployment
+
+### GitHub Pages (Current)
+- **Live Portfolio**: [https://madhurDroiddev.github.io/madhur-jain-portfolio](https://madhurDroiddev.github.io/madhur-jain-portfolio)
+- **CI/CD**: GitHub Actions (`.github/workflows/deploy.yml`)
+
+### Firebase Hosting (Recommended)
+For better performance and global CDN, deploy to Firebase Hosting:
+
+1. **Setup**: Follow [FIREBASE_DEPLOYMENT.md](FIREBASE_DEPLOYMENT.md)
+2. **Quick Start**: Run `./scripts/setup-firebase.sh`
+3. **Benefits**: Global CDN, HTTPS, better caching
+
+**Firebase Configuration Files**:
+- `firebase.json`: Hosting configuration
+- `.firebaserc`: Project settings
+- `.github/workflows/firebase-deploy.yml`: Firebase CI/CD
+
 ## 📞 Contact
 
 - **Phone**: +91-8287567816
