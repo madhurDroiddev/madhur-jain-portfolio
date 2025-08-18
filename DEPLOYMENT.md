@@ -44,9 +44,10 @@ git push -u origin main
 
 ### Step 4: Configure Repository Settings
 
-1. Go to repository Settings > Pages
-2. Ensure "GitHub Actions" is selected as source
-3. Your site will be available at: `https://yourusername.github.io/portfolio_app`
+For Firebase Hosting:
+1. Go to Firebase Console → Hosting
+2. Ensure your project `madhur-s-portfolio` is selected
+3. Live URL: `https://madhur-s-portfolio.web.app/`
 
 ## 📱 Mobile App Deployment
 
@@ -154,9 +155,8 @@ flutter build linux --release
 ### Custom Domain
 
 1. **Purchase domain** from any registrar
-2. **Add CNAME record** pointing to `yourusername.github.io`
-3. **Configure in GitHub Pages**:
-   - Go to repository Settings > Pages
+2. **Add A/CNAME records** pointing to Firebase Hosting per console instructions
+3. **Configure in Firebase Hosting**: Add your custom domain and verify
    - Add custom domain
    - Enable HTTPS
 

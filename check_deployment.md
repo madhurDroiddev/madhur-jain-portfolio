@@ -11,7 +11,7 @@
 
 Once the GitHub Actions workflow completes (usually takes 2-5 minutes), your portfolio will be available at:
 
-**🔗 https://madhurDroiddev.github.io/madhur-jain-portfolio**
+**🔗 https://madhur-s-portfolio.web.app/**
 
 ## 📊 Check Deployment Status
 
@@ -21,10 +21,10 @@ Once the GitHub Actions workflow completes (usually takes 2-5 minutes), your por
 3. Look for the latest workflow run
 4. Status should show "✅ completed" when done
 
-### Method 2: GitHub Pages Settings
-1. Go to: https://github.com/madhurDroiddev/madhur-jain-portfolio/settings/pages
-2. Check if "GitHub Actions" is selected as source
-3. The site should show as "Your site is live at https://madhurDroiddev.github.io/madhur-jain-portfolio"
+### Method 2: Firebase Hosting
+1. Go to Firebase Console Hosting: https://console.firebase.google.com/project/madhur-s-portfolio/hosting
+2. Verify latest deployment status and channels
+3. Open the live URL from the dashboard
 
 ## 🎯 What's Deployed
 

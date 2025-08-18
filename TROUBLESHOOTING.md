@@ -78,9 +78,7 @@ The repository now includes:
 
 ### Solution 1: Use Static HTML Version
 
-If Flutter build fails, the static HTML version should work:
-- URL: `https://madhurDroiddev.github.io/madhur-jain-portfolio/static/`
-- This is a complete HTML version of your portfolio
+If a deployment fails, verify the Firebase Hosting dashboard and the Actions logs. The legacy static GitHub Pages URLs are no longer the primary hosting.
 
 ### Solution 2: Manual GitHub Pages
 
@@ -123,9 +121,7 @@ If none of the above works:
 
 ## 📱 Alternative URLs to Try
 
-1. **Main URL**: https://madhurDroiddev.github.io/madhur-jain-portfolio
-2. **Static Version**: https://madhurDroiddev.github.io/madhur-jain-portfolio/static/
-3. **Direct HTML**: https://madhurDroiddev.github.io/madhur-jain-portfolio/index.html
+1. **Live URL**: https://madhur-s-portfolio.web.app/
 
 ---
 
