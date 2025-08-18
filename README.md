@@ -1,5 +1,10 @@
 # Madhur Jain - Portfolio App
 
+[![Firebase Hosting](https://img.shields.io/badge/Firebase%20Hosting-Live-brightgreen?logo=firebase)](https://madhur-s-portfolio.web.app/)
+[![Firebase Deploy Workflow](https://github.com/madhurDroiddev/madhur-jain-portfolio/actions/workflows/firebase-deploy.yml/badge.svg?branch=main)](https://github.com/madhurDroiddev/madhur-jain-portfolio/actions/workflows/firebase-deploy.yml)
+
+Latest workflow runs: https://github.com/madhurDroiddev/madhur-jain-portfolio/actions/workflows/firebase-deploy.yml
+
 A modern, responsive Flutter portfolio application showcasing Madhur Jain's expertise in mobile application development. Built with Flutter for cross-platform support (iOS, Android, and Web).
 
 ## 🚀 Features
