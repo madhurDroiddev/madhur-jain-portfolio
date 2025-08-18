@@ -43,6 +43,9 @@ dependencies:
   
   # Responsive Design
   responsive_framework: ^1.5.1
+  
+  # Firebase
+  firebase_core: ^2.24.2
 
 dev_dependencies:
   flutter_test:
