@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../../core/constants/app_constants.dart';
+import '../../../../core/theme/retro_theme.dart';
 
 class HeaderWidget extends StatelessWidget {
   final Map<String, String> contactInfo;
@@ -12,33 +13,49 @@ class HeaderWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDesktop = ResponsiveBreakpoints.of(context).isDesktop;
     final isTablet = ResponsiveBreakpoints.of(context).isTablet;
-    final isMobile = ResponsiveBreakpoints.of(context).isMobile;
+    final retro = Theme.of(context).extension<RetroThemeExtension>();
 
     return Container(
       width: double.infinity,
       padding: EdgeInsets.symmetric(
-        horizontal: isDesktop ? 80 : isTablet ? 40 : 20,
+        horizontal: isDesktop
+            ? 80
+            : isTablet
+                ? 40
+                : 20,
         vertical: isDesktop ? 60 : 40,
       ),
-      decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [
-            Color(AppConstants.primaryColor),
-            Color(AppConstants.secondaryColor),
-            Color(AppConstants.accentColor),
-          ],
-          stops: [0.0, 0.5, 1.0],
-        ),
+      decoration: BoxDecoration(
+        gradient: retro != null
+            ? LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: retro.headerGradient,
+                stops: const [0.0, 0.5, 1.0],
+              )
+            : const LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [
+                  Color(AppConstants.primaryColor),
+                  Color(AppConstants.secondaryColor),
+                  Color(AppConstants.accentColor),
+                ],
+                stops: [0.0, 0.5, 1.0],
+              ),
+        image: retro?.useImages == true && retro?.headerOverlayImage != null
+            ? DecorationImage(
+                image: AssetImage(retro!.headerOverlayImage!),
+                fit: BoxFit.cover,
+                opacity: 0.2,
+              )
+            : null,
       ),
       child: Column(
         children: [
-          // Profile Image and Name
           if (isDesktop)
             Row(
               children: [
-                // Profile Image
                 Container(
                   width: 200,
                   height: 200,
@@ -47,18 +64,20 @@ class HeaderWidget extends StatelessWidget {
                     color: Colors.white,
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withOpacity(0.1),
+                        color: Colors.black.withValues(alpha: 0.1),
                         blurRadius: 20,
                         offset: const Offset(0, 10),
                       ),
                     ],
                   ),
                   child: CircleAvatar(
-                     backgroundImage: AssetImage("assets/images/profile_pic.jpg",),
+                    backgroundImage: const AssetImage(
+                      "assets/images/profile_pic.jpg",
+                    ),
+                    backgroundColor: Colors.transparent,
                   ),
                 ),
                 const SizedBox(width: 60),
-                // Name and Title
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -89,7 +108,6 @@ class HeaderWidget extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 32),
-                      // Contact Buttons
                       Row(
                         children: [
                           _buildContactButton(
@@ -127,10 +145,8 @@ class HeaderWidget extends StatelessWidget {
               ],
             )
           else
-            // Mobile/Tablet Layout
             Column(
               children: [
-                // Profile Image
                 Container(
                   width: 120,
                   height: 120,
@@ -139,7 +155,7 @@ class HeaderWidget extends StatelessWidget {
                     color: Colors.white,
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withOpacity(0.1),
+                        color: Colors.black.withValues(alpha: 0.1),
                         blurRadius: 15,
                         offset: const Offset(0, 8),
                       ),
@@ -157,7 +173,6 @@ class HeaderWidget extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 24),
-                // Name and Title
                 Text(
                   contactInfo['name'] ?? AppConstants.name,
                   style: const TextStyle(
@@ -187,7 +202,6 @@ class HeaderWidget extends StatelessWidget {
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 32),
-                // Contact Buttons
                 Wrap(
                   spacing: 12,
                   runSpacing: 12,
@@ -242,10 +256,10 @@ class HeaderWidget extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         decoration: BoxDecoration(
-          color: Colors.white.withOpacity(0.2),
+          color: Colors.white.withValues(alpha: 0.2),
           borderRadius: BorderRadius.circular(25),
           border: Border.all(
-            color: Colors.white.withOpacity(0.3),
+            color: Colors.white.withValues(alpha: 0.3),
             width: 1,
           ),
         ),

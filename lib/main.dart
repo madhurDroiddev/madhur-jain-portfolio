@@ -5,6 +5,7 @@ import 'features/auth/data/firebase_auth_service.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'core/constants/app_constants.dart';
+import 'core/theme/retro_theme.dart';
 import 'core/di/injection_container.dart' as di;
 import 'features/portfolio/presentation/bloc/portfolio_bloc.dart';
 import 'features/theme/presentation/bloc/theme_bloc.dart';
@@ -30,7 +31,8 @@ class PortfolioApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (_) => di.sl<PortfolioBloc>()..add(LoadPortfolio())),
+        BlocProvider(
+            create: (_) => di.sl<PortfolioBloc>()..add(LoadPortfolio())),
         BlocProvider(create: (_) => di.sl<ThemeBloc>()..add(LoadTheme())),
       ],
       child: BlocBuilder<ThemeBloc, ThemeState>(
@@ -39,7 +41,7 @@ class PortfolioApp extends StatelessWidget {
             title: AppConstants.appName,
             debugShowCheckedModeBanner: false,
             builder: (context, child) => ResponsiveBreakpoints.builder(
-              child : child!,
+              child: child!,
               breakpoints: [
                 const Breakpoint(start: 0, end: 450, name: MOBILE),
                 const Breakpoint(start: 451, end: 800, name: TABLET),
@@ -47,26 +49,10 @@ class PortfolioApp extends StatelessWidget {
                 const Breakpoint(start: 1921, end: double.infinity, name: '4K'),
               ],
             ),
-            theme: ThemeData(
-              primarySwatch: Colors.blue,
-              useMaterial3: true,
-              colorScheme: ColorScheme.fromSeed(
-                seedColor: const Color(AppConstants.primaryColor),
-                brightness: Brightness.light,
-              ),
-              scaffoldBackgroundColor: const Color(0xFFf8fafc),
-            ),
-            darkTheme: ThemeData(
-              primarySwatch: Colors.blue,
-              useMaterial3: true,
-              colorScheme: ColorScheme.fromSeed(
-                seedColor: const Color(AppConstants.primaryColor),
-                brightness: Brightness.dark,
-              ),
-              scaffoldBackgroundColor: const Color(0xFF0f172a),
-            ),
-            themeMode: state is ThemeLoaded && state.theme.isDarkMode 
-                ? ThemeMode.dark 
+            theme: RetroTheme.light(),
+            darkTheme: RetroTheme.dark(),
+            themeMode: state is ThemeLoaded && state.theme.isDarkMode
+                ? ThemeMode.dark
                 : ThemeMode.light,
             home: const HomePage(),
           );

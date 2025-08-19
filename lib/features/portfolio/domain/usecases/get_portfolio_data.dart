@@ -1,7 +1,4 @@
 import '../repositories/portfolio_repository.dart';
-import '../entities/experience.dart';
-import '../entities/skill.dart';
-import '../entities/project.dart';
 
 class GetPortfolioData {
   final PortfolioRepository repository;
