@@ -26,7 +26,7 @@ class AppCard extends StatelessWidget {
             end: Alignment.bottomRight,
             colors: [
               Theme.of(context).colorScheme.surface,
-              Theme.of(context).colorScheme.surface.withValues(alpha: 0.8),
+              Theme.of(context).colorScheme.surface.withOpacity(0.8),
             ],
           ),
       color: gradient == null
@@ -34,11 +34,11 @@ class AppCard extends StatelessWidget {
           : null,
       borderRadius: borderRadius,
       border: Border.all(
-        color: Theme.of(context).colorScheme.outline.withValues(alpha: 0.2),
+        color: Theme.of(context).colorScheme.outline.withOpacity(0.2),
       ),
       boxShadow: [
         BoxShadow(
-          color: Colors.black.withValues(alpha: 0.1),
+          color: Colors.black.withOpacity(0.1),
           blurRadius: 10,
           offset: const Offset(0, 5),
         ),

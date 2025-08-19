@@ -27,7 +27,7 @@ class AboutSection extends StatelessWidget {
         end: Alignment.bottomCenter,
         colors: [
           Theme.of(context).colorScheme.surface,
-          Theme.of(context).colorScheme.surface.withValues(alpha: 0.8),
+          Theme.of(context).colorScheme.surface.withOpacity(0.8),
         ],
       ),
     );
