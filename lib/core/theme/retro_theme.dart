@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:portfolio_app/generated/assets.dart';
 
 class RetroThemeExtension extends ThemeExtension<RetroThemeExtension> {
   final List<Color> headerGradient;
@@ -77,6 +79,7 @@ class RetroTheme {
       colorScheme: colorScheme,
       scaffoldBackgroundColor: const Color(0xFFF2F4F8),
       textSelectionTheme: const TextSelectionThemeData(cursorColor: deepPurple),
+      textTheme: GoogleFonts.rubikTextTheme(),
       extensions: const [
         RetroThemeExtension(
           headerGradient: [deepPurple, magenta, cyan],
@@ -103,12 +106,14 @@ class RetroTheme {
       colorScheme: colorScheme,
       scaffoldBackgroundColor: darkBg,
       textSelectionTheme: const TextSelectionThemeData(cursorColor: neonGreen),
+      textTheme: GoogleFonts.rubikTextTheme(),
       extensions: const [
         RetroThemeExtension(
           headerGradient: [darkBg, deepPurple, magenta],
           contactGradient: [deepPurple, magenta],
           backgroundImage: null, // e.g. 'assets/images/retro/grid_dark.png'
-          headerOverlayImage: null, // e.g. 'assets/images/retro/scanlines.png'
+          headerOverlayImage:
+              Assets.svgsBanner, // e.g. 'assets/images/retro/scanlines.png'
           useImages: false,
         ),
       ],

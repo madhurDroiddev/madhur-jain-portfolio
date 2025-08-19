@@ -2,7 +2,8 @@
 // If you later add mobile platforms, consider using flutterfire CLI to regenerate.
 
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
-import 'package:flutter/foundation.dart' show defaultTargetPlatform, TargetPlatform, kIsWeb;
+import 'package:flutter/foundation.dart'
+    show defaultTargetPlatform, TargetPlatform, kIsWeb;
 
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
@@ -31,4 +32,3 @@ class DefaultFirebaseOptions {
     measurementId: 'G-1K40X6HWLK',
   );
 }
-

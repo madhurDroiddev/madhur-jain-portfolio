@@ -12,7 +12,8 @@ Future<void> main() async {
 
   // Meta: about
   batch.set(root.collection('meta').doc('about'), {
-    'summary': 'Results-driven Senior Mobile App Developer with expertise in Native Android and Flutter...'
+    'summary':
+        'Results-driven Senior Mobile App Developer with expertise in Native Android and Flutter...'
   });
 
   // Meta: contact
@@ -33,35 +34,40 @@ Future<void> main() async {
       'company': 'Cognizant',
       'position': 'Sr. Software Engineer',
       'duration': 'March 2025 - Present',
-      'description': 'Developing and maintaining scalable mobile applications using Native Android development and Flutter for enterprise and banking solutions.',
+      'description':
+          'Developing and maintaining scalable mobile applications using Native Android development and Flutter for enterprise and banking solutions.',
     },
     {
       'order': 2,
       'company': 'Alternative Tech Lab Pvt Ltd',
       'position': 'Senior Mobile App Developer',
       'duration': 'July 2024 - March 2025',
-      'description': 'Leading the development of product-based mobile applications, including e-commerce and booking platforms.',
+      'description':
+          'Leading the development of product-based mobile applications, including e-commerce and booking platforms.',
     },
     {
       'order': 3,
       'company': 'Cognizant',
       'position': 'Associate Project',
       'duration': 'Aug 2021 - July 2024',
-      'description': 'Developed features for Personal Banking Application including remote cheque scanning and global search functionality.',
+      'description':
+          'Developed features for Personal Banking Application including remote cheque scanning and global search functionality.',
     },
     {
       'order': 4,
       'company': 'DLT Labs',
       'position': 'Mobile Application Developer',
       'duration': 'March 2021 - July 2021',
-      'description': 'Developed and maintained custom plugins to enhance application functionality and managed production code.',
+      'description':
+          'Developed and maintained custom plugins to enhance application functionality and managed production code.',
     },
     {
       'order': 5,
       'company': 'Ongraph Technology',
       'position': 'Mobile Application Developer',
       'duration': 'Nov 2017 - Feb 2021',
-      'description': 'Developed IoT-based applications and enterprise expense management applications using Native Android and Flutter.',
+      'description':
+          'Developed IoT-based applications and enterprise expense management applications using Native Android and Flutter.',
     },
   ];
   for (final exp in experiences) {
@@ -130,25 +136,29 @@ Future<void> main() async {
     {
       'order': 1,
       'name': 'Personal Banking Application',
-      'description': 'Developed features including remote cheque scanning, global search functionality, and multi-account management.',
+      'description':
+          'Developed features including remote cheque scanning, global search functionality, and multi-account management.',
       'technologies': 'Native Android, Java, Kotlin',
     },
     {
       'order': 2,
       'name': 'Corporate Banking Application',
-      'description': 'Feature development and task distribution across the team with code reviews and compliance standards.',
+      'description':
+          'Feature development and task distribution across the team with code reviews and compliance standards.',
       'technologies': 'Native Android, Clean Architecture',
     },
     {
       'order': 3,
       'name': 'IoT-Based Application',
-      'description': 'Bluetooth-enabled application for device locking/unlocking functionality.',
+      'description':
+          'Bluetooth-enabled application for device locking/unlocking functionality.',
       'technologies': 'Native Android, Bluetooth SDK',
     },
     {
       'order': 4,
       'name': 'Enterprise Expense Management',
-      'description': 'Expense and report management application with GPS trip monitoring.',
+      'description':
+          'Expense and report management application with GPS trip monitoring.',
       'technologies': 'Flutter, GPS, Local Storage',
     },
   ];
@@ -161,4 +171,3 @@ Future<void> main() async {
   // ignore: avoid_print
   print('Seeded Firestore with portfolio data under portfolio/v1');
 }
-

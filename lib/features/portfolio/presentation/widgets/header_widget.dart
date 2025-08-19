@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:portfolio_app/generated/assets.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../../core/constants/app_constants.dart';
@@ -25,215 +28,186 @@ class HeaderWidget extends StatelessWidget {
                 : 20,
         vertical: isDesktop ? 60 : 40,
       ),
-      decoration: BoxDecoration(
-        gradient: retro != null
-            ? LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: retro.headerGradient,
-                stops: const [0.0, 0.5, 1.0],
-              )
-            : const LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: [
-                  Color(AppConstants.primaryColor),
-                  Color(AppConstants.secondaryColor),
-                  Color(AppConstants.accentColor),
-                ],
-                stops: [0.0, 0.5, 1.0],
-              ),
-        image: retro?.useImages == true && retro?.headerOverlayImage != null
-            ? DecorationImage(
-                image: AssetImage(retro!.headerOverlayImage!),
-                fit: BoxFit.cover,
-                opacity: 0.2,
-              )
-            : null,
-      ),
       child: Column(
         children: [
           if (isDesktop)
-            Row(
+            Stack(
               children: [
-                Container(
-                  width: 200,
-                  height: 200,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.1),
-                        blurRadius: 20,
-                        offset: const Offset(0, 10),
-                      ),
-                    ],
-                  ),
-                  child: CircleAvatar(
-                    backgroundImage: const AssetImage(
-                      "assets/images/profile_pic.jpg",
+                Stack(
+                  children: [
+                    SvgPicture.asset(
+                      Assets.svgsForegroundBanner,
+                      width: 300,
+                      height: 300,
                     ),
-                    backgroundColor: Colors.transparent,
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          contactInfo['name'] ?? '',
+                          style: GoogleFonts.rubikDoodleShadow(
+                            fontSize: 40,
+                            fontWeight: FontWeight.w900,
+                            color: Colors.black,
+                          ),
+                        ),
+                        Text(
+                          contactInfo['title'] ?? '',
+                          style: GoogleFonts.rubikDoodleShadow(
+                            fontSize: 40,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.black,
+                          ),
+                        ),
+                        const SizedBox(height: 8),
+                        Text(
+                          contactInfo['subtitle'] ?? '',
+                          style: GoogleFonts.rubikDoodleShadow(
+                            fontSize: 40,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.black,
+                          ),
+                        ),
+                        const SizedBox(height: 32),
+                        Text(
+                          "I'm Evren Shah Lorem Ipsum is simply dummy text of the printing and typesetting industry.\nLorem Ipsum has been the industry's standard dummy text ever since the 1500s,\nwhen an unknown printer took a galley of type and scrambled it to specimen book.",
+                          style: GoogleFonts.rubik(color: Colors.grey),
+                        ),
+                        const SizedBox(height: 32),
+                        Row(
+                          children: [
+                            _buildContactButton(
+                              context,
+                              Assets.svgsGithubIcon,
+                              'GitHub',
+                              contactInfo['github'] ?? AppConstants.githubUrl,
+                            ),
+                            const SizedBox(width: 16),
+                            _buildContactButton(
+                              context,
+                              Assets.svgsLinkedinIcon,
+                              'LinkedIn',
+                              contactInfo['linkedin'] ??
+                                  AppConstants.linkedinUrl,
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                Positioned(
+                  right: 0,
+                  child: Container(
+                    width: 400,
+                    height: 400,
+                    child: SvgPicture.asset(Assets.svgsBanner),
                   ),
                 ),
-                const SizedBox(width: 60),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+              ],
+            )
+          else
+            Container(
+              child: Stack(
+                children: [
+                  SvgPicture.asset(
+                    Assets.svgsForegroundBanner,
+                    width: 300,
+                    height: 300,
+                  ),
+                  Column(
                     children: [
-                      Text(
-                        contactInfo['name'] ?? AppConstants.name,
-                        style: const TextStyle(
-                          fontSize: 48,
-                          fontWeight: FontWeight.bold,
+                      Container(
+                        width: 120,
+                        height: 120,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
                           color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.1),
+                              blurRadius: 15,
+                              offset: const Offset(0, 8),
+                            ),
+                          ],
+                        ),
+                        child: const Center(
+                          child: Text(
+                            'MJ',
+                            style: TextStyle(
+                              fontSize: 48,
+                              fontWeight: FontWeight.bold,
+                              color: Color(AppConstants.primaryColor),
+                            ),
+                          ),
                         ),
                       ),
-                      const SizedBox(height: 16),
+                      const SizedBox(height: 24),
+                      Text(
+                        contactInfo['name'] ?? AppConstants.name,
+                        style: GoogleFonts.rubikDoodleShadow(
+                          fontSize: 32,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                      const SizedBox(height: 12),
                       Text(
                         contactInfo['title'] ?? AppConstants.title,
-                        style: const TextStyle(
-                          fontSize: 24,
+                        style: GoogleFonts.rubikDoodleShadow(
+                          fontSize: 18,
                           fontWeight: FontWeight.w500,
-                          color: Colors.white,
+                          color: Colors.black,
                         ),
+                        textAlign: TextAlign.center,
                       ),
                       const SizedBox(height: 8),
                       Text(
                         contactInfo['subtitle'] ?? AppConstants.subtitle,
-                        style: const TextStyle(
-                          fontSize: 18,
-                          color: Colors.white70,
+                        style: GoogleFonts.rubikDoodleShadow(
+                          fontSize: 16,
+                          color: Colors.black,
                         ),
+                        textAlign: TextAlign.center,
                       ),
                       const SizedBox(height: 32),
-                      Row(
+                      Wrap(
+                        spacing: 12,
+                        runSpacing: 12,
+                        alignment: WrapAlignment.center,
                         children: [
-                          _buildContactButton(
+                          /*_buildContactButton(
                             context,
                             Icons.phone,
                             'Call',
                             'tel:${contactInfo['phone'] ?? AppConstants.phone}',
                           ),
-                          const SizedBox(width: 16),
                           _buildContactButton(
                             context,
                             Icons.email,
                             'Email',
                             'mailto:${contactInfo['email'] ?? AppConstants.email}',
                           ),
-                          const SizedBox(width: 16),
                           _buildContactButton(
                             context,
                             Icons.code,
                             'GitHub',
                             contactInfo['github'] ?? AppConstants.githubUrl,
                           ),
-                          const SizedBox(width: 16),
                           _buildContactButton(
                             context,
                             Icons.work,
                             'LinkedIn',
                             contactInfo['linkedin'] ?? AppConstants.linkedinUrl,
-                          ),
+                          ),*/
                         ],
                       ),
                     ],
                   ),
-                ),
-              ],
-            )
-          else
-            Column(
-              children: [
-                Container(
-                  width: 120,
-                  height: 120,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.1),
-                        blurRadius: 15,
-                        offset: const Offset(0, 8),
-                      ),
-                    ],
-                  ),
-                  child: const Center(
-                    child: Text(
-                      'MJ',
-                      style: TextStyle(
-                        fontSize: 48,
-                        fontWeight: FontWeight.bold,
-                        color: Color(AppConstants.primaryColor),
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 24),
-                Text(
-                  contactInfo['name'] ?? AppConstants.name,
-                  style: const TextStyle(
-                    fontSize: 32,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(height: 12),
-                Text(
-                  contactInfo['title'] ?? AppConstants.title,
-                  style: const TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.white,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(height: 8),
-                Text(
-                  contactInfo['subtitle'] ?? AppConstants.subtitle,
-                  style: const TextStyle(
-                    fontSize: 16,
-                    color: Colors.white70,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(height: 32),
-                Wrap(
-                  spacing: 12,
-                  runSpacing: 12,
-                  alignment: WrapAlignment.center,
-                  children: [
-                    _buildContactButton(
-                      context,
-                      Icons.phone,
-                      'Call',
-                      'tel:${contactInfo['phone'] ?? AppConstants.phone}',
-                    ),
-                    _buildContactButton(
-                      context,
-                      Icons.email,
-                      'Email',
-                      'mailto:${contactInfo['email'] ?? AppConstants.email}',
-                    ),
-                    _buildContactButton(
-                      context,
-                      Icons.code,
-                      'GitHub',
-                      contactInfo['github'] ?? AppConstants.githubUrl,
-                    ),
-                    _buildContactButton(
-                      context,
-                      Icons.work,
-                      'LinkedIn',
-                      contactInfo['linkedin'] ?? AppConstants.linkedinUrl,
-                    ),
-                  ],
-                ),
-              ],
+                ],
+              ),
             ),
         ],
       ),
@@ -242,7 +216,7 @@ class HeaderWidget extends StatelessWidget {
 
   Widget _buildContactButton(
     BuildContext context,
-    IconData icon,
+    String icon,
     String label,
     String url,
   ) {
@@ -257,19 +231,19 @@ class HeaderWidget extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         decoration: BoxDecoration(
           color: Colors.white.withOpacity(0.2),
-          borderRadius: BorderRadius.circular(25),
+          borderRadius: BorderRadius.circular(2),
           border: Border.all(
-            color: Colors.white.withOpacity(0.3),
+            color: Colors.black,
             width: 1,
           ),
         ),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(
+            SvgPicture.asset(
               icon,
-              color: Colors.white,
-              size: 20,
+              width: 30,
+              height: 30,
             ),
             const SizedBox(width: 8),
             Text(
@@ -277,7 +251,7 @@ class HeaderWidget extends StatelessWidget {
               style: const TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w500,
-                color: Colors.white,
+                color: Colors.black,
               ),
             ),
           ],

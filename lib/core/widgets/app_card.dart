@@ -6,6 +6,7 @@ class AppCard extends StatelessWidget {
   final BorderRadius borderRadius;
   final Gradient? gradient;
   final Color? color;
+  final Border? border;
 
   const AppCard({
     super.key,
@@ -14,8 +15,9 @@ class AppCard extends StatelessWidget {
     BorderRadius? borderRadius,
     this.gradient,
     this.color,
+    this.border,
   }) : borderRadius =
-            borderRadius ?? const BorderRadius.all(Radius.circular(16));
+            borderRadius ?? const BorderRadius.all(Radius.circular(5));
 
   @override
   Widget build(BuildContext context) {
@@ -33,9 +35,10 @@ class AppCard extends StatelessWidget {
           ? (color ?? Theme.of(context).colorScheme.surface)
           : null,
       borderRadius: borderRadius,
-      border: Border.all(
-        color: Theme.of(context).colorScheme.outline.withOpacity(0.2),
-      ),
+      border: border ??
+          Border.all(
+            color: Colors.white70,
+          ),
       boxShadow: [
         BoxShadow(
           color: Colors.black.withOpacity(0.1),

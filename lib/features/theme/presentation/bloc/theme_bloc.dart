@@ -24,7 +24,7 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
     Emitter<ThemeState> emit,
   ) async {
     emit(ThemeLoading());
-    
+
     try {
       final theme = await getTheme();
       emit(ThemeLoaded(theme: theme));
@@ -40,7 +40,7 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
     try {
       final currentTheme = await getTheme();
       final newTheme = ThemeEntity(isDarkMode: !currentTheme.isDarkMode);
-      
+
       await setTheme(newTheme);
       emit(ThemeLoaded(theme: newTheme));
     } catch (e) {

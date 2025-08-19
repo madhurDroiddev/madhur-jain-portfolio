@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import '../../domain/entities/skill.dart';
-import '../../../../core/widgets/section_container.dart';
 import '../../../../core/widgets/app_card.dart';
 
 class SkillsSection extends StatelessWidget {
@@ -14,34 +13,53 @@ class SkillsSection extends StatelessWidget {
     final isDesktop = ResponsiveBreakpoints.of(context).isDesktop;
     final isTablet = ResponsiveBreakpoints.of(context).isTablet;
 
-    return SectionContainer(
-      title: 'Technical Skills',
-      titleIcon: Icons.code,
-      child: GridView.builder(
-        shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: isDesktop
-              ? 3
-              : isTablet
-                  ? 2
-                  : 1,
-          crossAxisSpacing: 20,
-          mainAxisSpacing: 20,
-          childAspectRatio: isDesktop ? 1.5 : 1.2,
-        ),
-        itemCount: skills.length,
-        itemBuilder: (context, index) {
-          return _buildSkillCard(context, skills[index]);
-        },
+    return Padding(
+      padding: EdgeInsets.symmetric(
+        horizontal: isDesktop
+            ? 80
+            : isTablet
+                ? 40
+                : 20,
       ),
-      backgroundColor: Theme.of(context).colorScheme.surface,
+      child: Column(children: [
+        Text(
+          "My Skills",
+          style: TextStyle(
+              color: Colors.black, fontSize: 30, fontWeight: FontWeight.w900),
+        ),
+        SizedBox(
+          height: 20,
+        ),
+        GridView.builder(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: isDesktop
+                ? 3
+                : isTablet
+                    ? 2
+                    : 1,
+            crossAxisSpacing: 20,
+            mainAxisSpacing: 20,
+            childAspectRatio: isDesktop ? 1.5 : 1.2,
+          ),
+          itemCount: skills.length,
+          itemBuilder: (context, index) {
+            return _buildSkillCard(context, skills[index]);
+          },
+        ),
+        SizedBox(
+          height: 20,
+        ),
+      ]),
     );
   }
 
   Widget _buildSkillCard(BuildContext context, Skill skill) {
     return AppCard(
       padding: const EdgeInsets.all(20),
+      color: Colors.white,
+      border: Border.all(color: Colors.black54),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -50,14 +68,15 @@ class SkillsSection extends StatelessWidget {
             style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.bold,
-              color: Theme.of(context).colorScheme.primary,
+              color: Colors.black,
             ),
           ),
           const SizedBox(height: 8),
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
             decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
+              color: Colors.white,
+              border: Border.all(color: Colors.black87),
               borderRadius: BorderRadius.circular(12),
             ),
             child: Text(
@@ -65,7 +84,7 @@ class SkillsSection extends StatelessWidget {
               style: TextStyle(
                 fontSize: 12,
                 fontWeight: FontWeight.w500,
-                color: Theme.of(context).colorScheme.primary,
+                color: Colors.black,
               ),
             ),
           ),
@@ -75,7 +94,7 @@ class SkillsSection extends StatelessWidget {
             style: TextStyle(
               fontSize: 14,
               height: 1.4,
-              color: Theme.of(context).colorScheme.onSurface.withOpacity(0.8),
+              color: Colors.black,
             ),
           ),
         ],

@@ -20,10 +20,10 @@ class PortfolioBloc extends Bloc<PortfolioEvent, PortfolioState> {
     Emitter<PortfolioState> emit,
   ) async {
     emit(PortfolioLoading());
-    
+
     try {
       final portfolioData = await getPortfolioData();
-      
+
       emit(PortfolioLoaded(
         experiences: portfolioData['experiences'] as List<Experience>,
         skills: portfolioData['skills'] as List<Skill>,

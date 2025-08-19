@@ -23,20 +23,14 @@ class ContactSection extends StatelessWidget {
         fontWeight: FontWeight.bold,
         color: Colors.white,
       ),
-      gradient: retro != null
-          ? LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: retro.contactGradient,
-            )
-          : const LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [
-                Color(AppConstants.primaryColor),
-                Color(AppConstants.secondaryColor),
-              ],
-            ),
+      gradient: const LinearGradient(
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight,
+        colors: [
+          Colors.black,
+          Colors.black87,
+        ],
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

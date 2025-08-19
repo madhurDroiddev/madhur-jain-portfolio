@@ -49,6 +49,8 @@ dependencies:
   firebase_auth: ^4.17.8
   cloud_firestore: ^4.15.10
 
+  google_fonts: ^6.3.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -59,6 +61,8 @@ flutter:
   
   assets:
     - assets/images/
+    - assets/images/svgs/
+    - assets/
   #   - assets/icons/
   
   # fonts:

@@ -38,12 +38,14 @@ class _HomePageState extends State<HomePage> {
   }
 
   void _scrollToSection(int index) {
-    if (index < _sectionKeys.length && _sectionKeys[index].currentContext != null) {
-      final RenderBox renderBox = _sectionKeys[index].currentContext!.findRenderObject() as RenderBox;
+    if (index < _sectionKeys.length &&
+        _sectionKeys[index].currentContext != null) {
+      final RenderBox renderBox =
+          _sectionKeys[index].currentContext!.findRenderObject() as RenderBox;
       final position = renderBox.localToGlobal(Offset.zero);
       final screenHeight = MediaQuery.of(context).size.height;
       final offset = position.dy - (screenHeight * 0.15); // 15% from top
-      
+
       if (_scrollController.hasClients) {
         _scrollController.animateTo(
           offset.clamp(0.0, _scrollController.position.maxScrollExtent),
@@ -59,33 +61,35 @@ class _HomePageState extends State<HomePage> {
     final isDesktop = ResponsiveBreakpoints.of(context).isDesktop;
 
     return Scaffold(
-      appBar: isDesktop ? null : AppBar(
-        title: const Text(AppConstants.name),
-        backgroundColor: Theme.of(context).colorScheme.surface,
-        elevation: 0,
-        actions: [
-          BlocBuilder<ThemeBloc, ThemeState>(
-            builder: (context, state) {
-              return IconButton(
-                icon: Icon(
-                  state is ThemeLoaded && state.theme.isDarkMode 
-                      ? Icons.light_mode 
-                      : Icons.dark_mode,
+      appBar: isDesktop
+          ? null
+          : AppBar(
+              title: const Text(AppConstants.name),
+              backgroundColor: Theme.of(context).colorScheme.surface,
+              elevation: 0,
+              actions: [
+                BlocBuilder<ThemeBloc, ThemeState>(
+                  builder: (context, state) {
+                    return IconButton(
+                      icon: Icon(
+                        state is ThemeLoaded && state.theme.isDarkMode
+                            ? Icons.light_mode
+                            : Icons.dark_mode,
+                      ),
+                      onPressed: () {
+                        context.read<ThemeBloc>().add(ToggleTheme());
+                      },
+                    );
+                  },
                 ),
-                onPressed: () {
-                  context.read<ThemeBloc>().add(ToggleTheme());
-                },
-              );
-            },
-          ),
-        ],
-      ),
+              ],
+            ),
       drawer: isDesktop ? null : _buildDrawer(),
       body: Row(
         children: [
           // Desktop Navigation
           if (isDesktop) _buildDesktopNavigation(),
-          
+
           // Main Content
           Expanded(
             child: BlocBuilder<PortfolioBloc, PortfolioState>(
@@ -133,7 +137,7 @@ class _HomePageState extends State<HomePage> {
           DrawerHeader(
             decoration: const BoxDecoration(
               gradient: LinearGradient(
-                colors: [Color(AppConstants.primaryColor), Color(AppConstants.secondaryColor)],
+                colors: [Colors.black, Colors.white70],
               ),
             ),
             child: const Column(
@@ -142,7 +146,9 @@ class _HomePageState extends State<HomePage> {
                 CircleAvatar(
                   radius: 30,
                   backgroundColor: Colors.white,
-                  backgroundImage: AssetImage("assets/images/profile_pic.jpg",),
+                  backgroundImage: AssetImage(
+                    "assets/images/profile_pic.jpg",
+                  ),
                 ),
                 SizedBox(height: 12),
                 Text(
@@ -293,37 +299,37 @@ class _HomePageState extends State<HomePage> {
         children: [
           // Header Section
           HeaderWidget(contactInfo: state.contactInfo),
-          
+
           // About Section
           Container(
             key: _sectionKeys[0],
             child: AboutSection(summary: state.summary),
           ),
-          
+
           // Experience Section
           Container(
             key: _sectionKeys[1],
             child: ExperienceSection(experiences: state.experiences),
           ),
-          
+
           // Skills Section
           Container(
             key: _sectionKeys[2],
             child: SkillsSection(skills: state.skills),
           ),
-          
+
           // Projects Section
           Container(
             key: _sectionKeys[3],
             child: ProjectsSection(projects: state.projects),
           ),
-          
+
           // Contact Section
           Container(
             key: _sectionKeys[4],
             child: ContactSection(contactInfo: state.contactInfo),
           ),
-          
+
           // Footer
           FooterWidget(contactInfo: state.contactInfo),
         ],

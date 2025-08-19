@@ -38,7 +38,9 @@ class PortfolioRemoteDataSourceImpl implements PortfolioRemoteDataSource {
         .collection('skills')
         .orderBy('order', descending: false)
         .get();
-    return query.docs.map((d) => SkillModel.fromJson(d.data())).toList(growable: false);
+    return query.docs
+        .map((d) => SkillModel.fromJson(d.data()))
+        .toList(growable: false);
   }
 
   @override
@@ -49,19 +51,31 @@ class PortfolioRemoteDataSourceImpl implements PortfolioRemoteDataSource {
         .collection('projects')
         .orderBy('order', descending: false)
         .get();
-    return query.docs.map((d) => ProjectModel.fromJson(d.data())).toList(growable: false);
+    return query.docs
+        .map((d) => ProjectModel.fromJson(d.data()))
+        .toList(growable: false);
   }
 
   @override
   Future<String> getSummary() async {
-    final doc = await firestore.collection('portfolio').doc('v1').collection('meta').doc('about').get();
+    final doc = await firestore
+        .collection('portfolio')
+        .doc('v1')
+        .collection('meta')
+        .doc('about')
+        .get();
     final data = doc.data();
     return (data?['summary'] as String?) ?? '';
   }
 
   @override
   Future<Map<String, String>> getContactInfo() async {
-    final doc = await firestore.collection('portfolio').doc('v1').collection('meta').doc('contact').get();
+    final doc = await firestore
+        .collection('portfolio')
+        .doc('v1')
+        .collection('meta')
+        .doc('contact')
+        .get();
     final data = doc.data() ?? {};
     return {
       'name': (data['name'] as String?) ?? '',
@@ -74,4 +88,3 @@ class PortfolioRemoteDataSourceImpl implements PortfolioRemoteDataSource {
     };
   }
 }
-

@@ -21,7 +21,7 @@ Future<void> init() async {
   sl.registerFactory(
     () => PortfolioBloc(getPortfolioData: sl()),
   );
-  
+
   sl.registerFactory(
     () => ThemeBloc(
       getTheme: sl(),
@@ -38,7 +38,7 @@ Future<void> init() async {
   sl.registerLazySingleton<PortfolioRepository>(
     () => PortfolioRepositoryImpl(sl(), sl()),
   );
-  
+
   sl.registerLazySingleton<ThemeRepository>(
     () => ThemeRepositoryImpl(sl()),
   );
@@ -50,7 +50,7 @@ Future<void> init() async {
   sl.registerLazySingleton<PortfolioRemoteDataSource>(
     () => PortfolioRemoteDataSourceImpl(),
   );
-  
+
   sl.registerLazySingleton<ThemeLocalDataSource>(
     () => ThemeLocalDataSourceImpl(),
   );

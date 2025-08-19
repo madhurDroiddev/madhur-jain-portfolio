@@ -16,5 +16,6 @@ class Project extends Equatable {
   });
 
   @override
-  List<Object?> get props => [name, description, technologies, githubUrl, liveUrl];
+  List<Object?> get props =>
+      [name, description, technologies, githubUrl, liveUrl];
 }

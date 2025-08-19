@@ -68,4 +68,3 @@ class PortfolioBootstrapService {
     await batch.commit();
   }
 }
-

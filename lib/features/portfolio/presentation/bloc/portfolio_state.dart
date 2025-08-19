@@ -2,7 +2,7 @@ part of 'portfolio_bloc.dart';
 
 abstract class PortfolioState extends Equatable {
   const PortfolioState();
-  
+
   @override
   List<Object> get props => [];
 }
@@ -27,7 +27,8 @@ class PortfolioLoaded extends PortfolioState {
   });
 
   @override
-  List<Object> get props => [experiences, skills, projects, summary, contactInfo];
+  List<Object> get props =>
+      [experiences, skills, projects, summary, contactInfo];
 }
 
 class PortfolioError extends PortfolioState {

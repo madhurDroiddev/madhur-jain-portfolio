@@ -16,37 +16,42 @@ class PortfolioLocalDataSourceImpl implements PortfolioLocalDataSource {
   Future<List<ExperienceModel>> getExperiences() async {
     // Simulate network delay
     await Future.delayed(const Duration(milliseconds: 100));
-    
+
     return [
       const ExperienceModel(
         company: 'Cognizant',
         position: 'Sr. Software Engineer',
         duration: 'March 2025 - Present',
-        description: 'Developing and maintaining scalable mobile applications using Native Android development and Flutter for enterprise and banking solutions.',
+        description:
+            'Developing and maintaining scalable mobile applications using Native Android development and Flutter for enterprise and banking solutions.',
       ),
       const ExperienceModel(
         company: 'Alternative Tech Lab Pvt Ltd',
         position: 'Senior Mobile App Developer',
         duration: 'July 2024 - March 2025',
-        description: 'Leading the development of product-based mobile applications, including e-commerce and booking platforms.',
+        description:
+            'Leading the development of product-based mobile applications, including e-commerce and booking platforms.',
       ),
       const ExperienceModel(
         company: 'Cognizant',
         position: 'Associate Project',
         duration: 'Aug 2021 - July 2024',
-        description: 'Developed features for Personal Banking Application including remote cheque scanning and global search functionality.',
+        description:
+            'Developed features for Personal Banking Application including remote cheque scanning and global search functionality.',
       ),
       const ExperienceModel(
         company: 'DLT Labs',
         position: 'Mobile Application Developer',
         duration: 'March 2021 - July 2021',
-        description: 'Developed and maintained custom plugins to enhance application functionality and managed production code.',
+        description:
+            'Developed and maintained custom plugins to enhance application functionality and managed production code.',
       ),
       const ExperienceModel(
         company: 'Ongraph Technology',
         position: 'Mobile Application Developer',
         duration: 'Nov 2017 - Feb 2021',
-        description: 'Developed IoT-based applications and enterprise expense management applications using Native Android and Flutter.',
+        description:
+            'Developed IoT-based applications and enterprise expense management applications using Native Android and Flutter.',
       ),
     ];
   }
@@ -54,7 +59,7 @@ class PortfolioLocalDataSourceImpl implements PortfolioLocalDataSource {
   @override
   Future<List<SkillModel>> getSkills() async {
     await Future.delayed(const Duration(milliseconds: 100));
-    
+
     return [
       const SkillModel(
         name: 'Native Android Development',
@@ -102,26 +107,30 @@ class PortfolioLocalDataSourceImpl implements PortfolioLocalDataSource {
   @override
   Future<List<ProjectModel>> getProjects() async {
     await Future.delayed(const Duration(milliseconds: 100));
-    
+
     return [
       const ProjectModel(
         name: 'Personal Banking Application',
-        description: 'Developed features including remote cheque scanning, global search functionality, and multi-account management.',
+        description:
+            'Developed features including remote cheque scanning, global search functionality, and multi-account management.',
         technologies: 'Native Android, Java, Kotlin',
       ),
       const ProjectModel(
         name: 'Corporate Banking Application',
-        description: 'Feature development and task distribution across the team with code reviews and compliance standards.',
+        description:
+            'Feature development and task distribution across the team with code reviews and compliance standards.',
         technologies: 'Native Android, Clean Architecture',
       ),
       const ProjectModel(
         name: 'IoT-Based Application',
-        description: 'Bluetooth-enabled application for device locking/unlocking functionality.',
+        description:
+            'Bluetooth-enabled application for device locking/unlocking functionality.',
         technologies: 'Native Android, Bluetooth SDK',
       ),
       const ProjectModel(
         name: 'Enterprise Expense Management',
-        description: 'Expense and report management application with GPS trip monitoring.',
+        description:
+            'Expense and report management application with GPS trip monitoring.',
         technologies: 'Flutter, GPS, Local Storage',
       ),
     ];
