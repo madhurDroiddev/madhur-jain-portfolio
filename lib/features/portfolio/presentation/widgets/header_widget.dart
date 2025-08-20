@@ -5,7 +5,6 @@ import 'package:portfolio_app/generated/assets.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../../core/constants/app_constants.dart';
-import '../../../../core/theme/retro_theme.dart';
 
 class HeaderWidget extends StatelessWidget {
   final Map<String, String> contactInfo;
@@ -16,7 +15,6 @@ class HeaderWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDesktop = ResponsiveBreakpoints.of(context).isDesktop;
     final isTablet = ResponsiveBreakpoints.of(context).isTablet;
-    final retro = Theme.of(context).extension<RetroThemeExtension>();
 
     return Container(
       width: double.infinity,
@@ -49,7 +47,7 @@ class HeaderWidget extends StatelessWidget {
                           style: GoogleFonts.rubikDoodleShadow(
                             fontSize: 40,
                             fontWeight: FontWeight.w900,
-                            color: Colors.black,
+                            color: Theme.of(context).colorScheme.onSurface,
                           ),
                         ),
                         Text(
@@ -57,7 +55,7 @@ class HeaderWidget extends StatelessWidget {
                           style: GoogleFonts.rubikDoodleShadow(
                             fontSize: 40,
                             fontWeight: FontWeight.w500,
-                            color: Colors.black,
+                            color: Theme.of(context).colorScheme.onSurface,
                           ),
                         ),
                         const SizedBox(height: 8),
@@ -66,13 +64,17 @@ class HeaderWidget extends StatelessWidget {
                           style: GoogleFonts.rubikDoodleShadow(
                             fontSize: 40,
                             fontWeight: FontWeight.w500,
-                            color: Colors.black,
+                            color: Theme.of(context).colorScheme.onSurface,
                           ),
                         ),
                         const SizedBox(height: 32),
                         Text(
                           "I'm Evren Shah Lorem Ipsum is simply dummy text of the printing and typesetting industry.\nLorem Ipsum has been the industry's standard dummy text ever since the 1500s,\nwhen an unknown printer took a galley of type and scrambled it to specimen book.",
-                          style: GoogleFonts.rubik(color: Colors.grey),
+                          style: GoogleFonts.rubik(
+                              color: Theme.of(context)
+                                  .colorScheme
+                                  .onSurface
+                                  .withOpacity(0.7)),
                         ),
                         const SizedBox(height: 32),
                         Row(
@@ -99,7 +101,7 @@ class HeaderWidget extends StatelessWidget {
                 ),
                 Positioned(
                   right: 0,
-                  child: Container(
+                  child: SizedBox(
                     width: 400,
                     height: 400,
                     child: SvgPicture.asset(Assets.svgsBanner),
@@ -110,6 +112,7 @@ class HeaderWidget extends StatelessWidget {
           else
             Container(
               child: Stack(
+                alignment: Alignment.center,
                 children: [
                   SvgPicture.asset(
                     Assets.svgsForegroundBanner,
@@ -123,10 +126,12 @@ class HeaderWidget extends StatelessWidget {
                         height: 120,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          color: Colors.white,
+                          color: Theme.of(context).colorScheme.surface,
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.black.withOpacity(0.1),
+                              color: Theme.of(context)
+                                  .shadowColor
+                                  .withOpacity(0.1),
                               blurRadius: 15,
                               offset: const Offset(0, 8),
                             ),
@@ -149,7 +154,7 @@ class HeaderWidget extends StatelessWidget {
                         style: GoogleFonts.rubikDoodleShadow(
                           fontSize: 32,
                           fontWeight: FontWeight.bold,
-                          color: Colors.black,
+                          color: Theme.of(context).colorScheme.onSurface,
                         ),
                         textAlign: TextAlign.center,
                       ),
@@ -159,7 +164,7 @@ class HeaderWidget extends StatelessWidget {
                         style: GoogleFonts.rubikDoodleShadow(
                           fontSize: 18,
                           fontWeight: FontWeight.w500,
-                          color: Colors.black,
+                          color: Theme.of(context).colorScheme.onSurface,
                         ),
                         textAlign: TextAlign.center,
                       ),
@@ -168,7 +173,7 @@ class HeaderWidget extends StatelessWidget {
                         contactInfo['subtitle'] ?? AppConstants.subtitle,
                         style: GoogleFonts.rubikDoodleShadow(
                           fontSize: 16,
-                          color: Colors.black,
+                          color: Theme.of(context).colorScheme.onSurface,
                         ),
                         textAlign: TextAlign.center,
                       ),
@@ -178,30 +183,7 @@ class HeaderWidget extends StatelessWidget {
                         runSpacing: 12,
                         alignment: WrapAlignment.center,
                         children: [
-                          /*_buildContactButton(
-                            context,
-                            Icons.phone,
-                            'Call',
-                            'tel:${contactInfo['phone'] ?? AppConstants.phone}',
-                          ),
-                          _buildContactButton(
-                            context,
-                            Icons.email,
-                            'Email',
-                            'mailto:${contactInfo['email'] ?? AppConstants.email}',
-                          ),
-                          _buildContactButton(
-                            context,
-                            Icons.code,
-                            'GitHub',
-                            contactInfo['github'] ?? AppConstants.githubUrl,
-                          ),
-                          _buildContactButton(
-                            context,
-                            Icons.work,
-                            'LinkedIn',
-                            contactInfo['linkedin'] ?? AppConstants.linkedinUrl,
-                          ),*/
+                          /* optional buttons omitted */
                         ],
                       ),
                     ],
@@ -230,10 +212,10 @@ class HeaderWidget extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         decoration: BoxDecoration(
-          color: Colors.white.withOpacity(0.2),
+          color: Theme.of(context).colorScheme.surface,
           borderRadius: BorderRadius.circular(2),
           border: Border.all(
-            color: Colors.black,
+            color: Theme.of(context).dividerColor,
             width: 1,
           ),
         ),
@@ -248,10 +230,10 @@ class HeaderWidget extends StatelessWidget {
             const SizedBox(width: 8),
             Text(
               label,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w500,
-                color: Colors.black,
+                color: Theme.of(context).colorScheme.onSurface,
               ),
             ),
           ],

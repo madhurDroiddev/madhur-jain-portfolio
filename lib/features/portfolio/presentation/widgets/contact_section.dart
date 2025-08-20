@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:portfolio_app/generated/assets.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../../core/constants/app_constants.dart';
 import '../../../../core/widgets/section_container.dart';
-import '../../../../core/theme/retro_theme.dart';
 
 class ContactSection extends StatelessWidget {
   final Map<String, String> contactInfo;
@@ -13,92 +14,103 @@ class ContactSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDesktop = ResponsiveBreakpoints.of(context).isDesktop;
-    final retro = Theme.of(context).extension<RetroThemeExtension>();
 
-    return SectionContainer(
-      title: 'Get In Touch',
-      titleIcon: Icons.contact_mail,
-      titleTextStyle: TextStyle(
-        fontSize: isDesktop ? 36 : 28,
-        fontWeight: FontWeight.bold,
-        color: Colors.white,
-      ),
-      gradient: const LinearGradient(
-        begin: Alignment.topLeft,
-        end: Alignment.bottomRight,
-        colors: [
-          Colors.black,
-          Colors.black87,
-        ],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          if (isDesktop)
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Expanded(
-                  flex: 1,
-                  child: _buildContactColumn(context),
-                ),
-                const SizedBox(width: 60),
-                Expanded(
-                  flex: 1,
-                  child: _buildSocialColumn(context),
-                ),
-              ],
-            )
-          else
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                _buildContactColumn(context),
-                const SizedBox(height: 32),
-                _buildSocialColumn(context),
-              ],
+    return Stack(
+      children: [
+        Positioned(
+          top: 0,
+          left: -60,
+          child: SvgPicture.asset(
+            Assets.svgsForegroundBanner,
+            colorFilter: ColorFilter.mode(
+              Theme.of(context).colorScheme.onSurface.withOpacity(0.2),
+              BlendMode.srcIn,
             ),
-          const SizedBox(height: 40),
-          Center(
-            child: Column(
-              children: [
-                const Text(
-                  'Ready to work together?',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
-                const SizedBox(height: 16),
-                ElevatedButton.icon(
-                  onPressed: () async {
-                    final uri = Uri.parse(
-                        'mailto:${contactInfo['email'] ?? AppConstants.email}?subject=Portfolio Inquiry');
-                    if (await canLaunchUrl(uri)) {
-                      await launchUrl(uri);
-                    }
-                  },
-                  icon: const Icon(Icons.email, color: Colors.white),
-                  label: const Text(
-                    'Send Message',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.white.withOpacity(0.2),
-                    foregroundColor: Colors.white,
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 32, vertical: 16),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(25),
-                    ),
-                  ),
-                ),
-              ],
-            ),
+            height: 350,
+            width: 350,
           ),
-        ],
-      ),
+        ),
+        SectionContainer(
+          title: 'Get In Touch',
+          titleIcon: Assets.svgsGetInTouch,
+          titleTextStyle: TextStyle(
+            fontSize: isDesktop ? 36 : 28,
+            fontWeight: FontWeight.bold,
+            color: Theme.of(context).colorScheme.onSurface,
+          ),
+          backgroundColor: Theme.of(context).colorScheme.surface,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              if (isDesktop)
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      flex: 1,
+                      child: _buildContactColumn(context),
+                    ),
+                    const SizedBox(width: 60),
+                    Expanded(
+                      flex: 1,
+                      child: _buildSocialColumn(context),
+                    ),
+                  ],
+                )
+              else
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    _buildContactColumn(context),
+                    const SizedBox(height: 32),
+                    _buildSocialColumn(context),
+                  ],
+                ),
+              const SizedBox(height: 40),
+              Center(
+                child: Column(
+                  children: [
+                    Text(
+                      'Ready to work together?',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Theme.of(context).colorScheme.onSurface,
+                      ),
+                    ),
+                    const SizedBox(height: 16),
+                    ElevatedButton.icon(
+                      onPressed: () async {
+                        final uri = Uri.parse(
+                            'mailto:${contactInfo['email'] ?? AppConstants.email}?subject=Portfolio Inquiry');
+                        if (await canLaunchUrl(uri)) {
+                          await launchUrl(uri);
+                        }
+                      },
+                      icon: Icon(Icons.email,
+                          color: Theme.of(context).colorScheme.onPrimary),
+                      label: Text(
+                        'Send Message',
+                        style: TextStyle(
+                            color: Theme.of(context).colorScheme.onPrimary),
+                      ),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Theme.of(context).colorScheme.primary,
+                        foregroundColor: Theme.of(context).colorScheme.onPrimary,
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 32, vertical: 16),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(25),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 
@@ -106,18 +118,18 @@ class ContactSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
+        Text(
           'Contact Information',
           style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold,
-            color: Colors.white,
+            color: Theme.of(context).colorScheme.onSurface,
           ),
         ),
         const SizedBox(height: 24),
         _buildContactItem(
           context,
-          Icons.phone,
+          Assets.svgsCallRound,
           'Phone',
           contactInfo['phone'] ?? AppConstants.phone,
           'tel:${contactInfo['phone'] ?? AppConstants.phone}',
@@ -125,7 +137,7 @@ class ContactSection extends StatelessWidget {
         const SizedBox(height: 16),
         _buildContactItem(
           context,
-          Icons.email,
+          Assets.svgsEmailRound,
           'Email',
           contactInfo['email'] ?? AppConstants.email,
           'mailto:${contactInfo['email'] ?? AppConstants.email}',
@@ -138,18 +150,18 @@ class ContactSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
+        Text(
           'Social Links',
           style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold,
-            color: Colors.white,
+            color: Theme.of(context).colorScheme.onSurface,
           ),
         ),
         const SizedBox(height: 24),
         _buildContactItem(
           context,
-          Icons.code,
+          Assets.svgsGithubIcon,
           'GitHub',
           'github.com/madhurDroiddev',
           contactInfo['github'] ?? AppConstants.githubUrl,
@@ -157,9 +169,9 @@ class ContactSection extends StatelessWidget {
         const SizedBox(height: 16),
         _buildContactItem(
           context,
-          Icons.work,
+          Assets.svgsLinkedinIcon,
           'LinkedIn',
-          'linkedin.com/in/madhur-jain',
+          'https://www.linkedin.com/in/madhur-jain-726599118/',
           contactInfo['linkedin'] ?? AppConstants.linkedinUrl,
         ),
       ],
@@ -168,7 +180,7 @@ class ContactSection extends StatelessWidget {
 
   Widget _buildContactItem(
     BuildContext context,
-    IconData icon,
+    String icon,
     String label,
     String value,
     String url,
@@ -183,20 +195,16 @@ class ContactSection extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: Colors.white.withOpacity(0.1),
-          borderRadius: BorderRadius.circular(12),
+          color: Theme.of(context).colorScheme.surface,
+          borderRadius: BorderRadius.circular(5),
           border: Border.all(
-            color: Colors.white.withOpacity(0.2),
+            color: Theme.of(context).dividerColor,
             width: 1,
           ),
         ),
         child: Row(
           children: [
-            Icon(
-              icon,
-              color: Colors.white,
-              size: 24,
-            ),
+            SvgPicture.asset(icon,width: 30,height: 30,),
             const SizedBox(width: 16),
             Expanded(
               child: Column(
@@ -204,19 +212,22 @@ class ContactSection extends StatelessWidget {
                 children: [
                   Text(
                     label,
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w500,
-                      color: Colors.white70,
+                      color: Theme.of(context)
+                          .colorScheme
+                          .onSurface
+                          .withOpacity(0.7),
                     ),
                   ),
                   const SizedBox(height: 4),
                   Text(
                     value,
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w600,
-                      color: Colors.white,
+                      color: Theme.of(context).colorScheme.onSurface,
                     ),
                   ),
                 ],

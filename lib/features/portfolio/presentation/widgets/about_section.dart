@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:portfolio_app/generated/assets.dart';
+import 'package:portfolio_app/widgets/section_title_widget.dart';
 import 'package:responsive_framework/responsive_framework.dart';
-import '../../../../core/widgets/section_container.dart';
 
 class AboutSection extends StatelessWidget {
   final String summary;
@@ -32,17 +32,10 @@ class AboutSection extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              RichText(
-                  text: TextSpan(
-                      text: "About ",
-                      style:
-                          TextStyle(fontWeight: FontWeight.w500, fontSize: 25),
-                      children: [
-                    TextSpan(
-                        text: 'Me',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 25))
-                  ])),
+              SectionTitleWidget(
+                firstText: "About",
+                lastText: "Me",
+              ),
               SizedBox(
                 height: 15,
               ),

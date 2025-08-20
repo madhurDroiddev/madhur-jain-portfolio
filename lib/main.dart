@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'firebase_options.dart';
 import 'features/auth/data/firebase_auth_service.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,7 +11,6 @@ import 'features/portfolio/presentation/bloc/portfolio_bloc.dart';
 import 'features/theme/presentation/bloc/theme_bloc.dart';
 import 'features/portfolio/presentation/pages/home_page.dart';
 import 'features/portfolio/data/bootstrap/portfolio_bootstrap_service.dart';
-import 'generated/assets.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

@@ -69,9 +69,15 @@ class RetroTheme {
     final colorScheme = ColorScheme.fromSeed(
       seedColor: neonGreen,
       brightness: Brightness.light,
-      primary: deepPurple,
-      secondary: magenta,
+      primary: Colors.black,
+      secondary: Colors.white,
       surface: const Color(0xFFF5F7FB),
+    );
+
+    final baseTextTheme = GoogleFonts.rubikTextTheme();
+    final textTheme = baseTextTheme.apply(
+      bodyColor: colorScheme.onSurface,
+      displayColor: colorScheme.onSurface,
     );
 
     return ThemeData(
@@ -79,7 +85,7 @@ class RetroTheme {
       colorScheme: colorScheme,
       scaffoldBackgroundColor: const Color(0xFFF2F4F8),
       textSelectionTheme: const TextSelectionThemeData(cursorColor: deepPurple),
-      textTheme: GoogleFonts.rubikTextTheme(),
+      textTheme: textTheme,
       extensions: const [
         RetroThemeExtension(
           headerGradient: [deepPurple, magenta, cyan],
@@ -96,9 +102,15 @@ class RetroTheme {
     final colorScheme = ColorScheme.fromSeed(
       seedColor: neonGreen,
       brightness: Brightness.dark,
-      primary: neonGreen,
-      secondary: magenta,
+      primary: Colors.black,
+      secondary: Colors.white,
       surface: darkPanel,
+    );
+
+    final baseTextTheme = GoogleFonts.rubikTextTheme();
+    final textTheme = baseTextTheme.apply(
+      bodyColor: colorScheme.onSurface,
+      displayColor: colorScheme.onSurface,
     );
 
     return ThemeData(
@@ -106,7 +118,7 @@ class RetroTheme {
       colorScheme: colorScheme,
       scaffoldBackgroundColor: darkBg,
       textSelectionTheme: const TextSelectionThemeData(cursorColor: neonGreen),
-      textTheme: GoogleFonts.rubikTextTheme(),
+      textTheme: textTheme,
       extensions: const [
         RetroThemeExtension(
           headerGradient: [darkBg, deepPurple, magenta],

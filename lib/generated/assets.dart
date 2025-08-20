@@ -3,11 +3,18 @@ class Assets {
   Assets._();
 
   static const String imagesProfilePic = 'assets/images/profile_pic.jpg';
-  static const String svgsAboutMePerson =
-      'assets/images/svgs/about_me_person.svg';
+  static const String svgsAboutMePerson = 'assets/images/svgs/about_me_person.svg';
   static const String svgsBanner = 'assets/images/svgs/banner.svg';
-  static const String svgsForegroundBanner =
-      'assets/images/svgs/foreground_banner.svg';
+  static const String svgsCallRound = 'assets/images/svgs/call_round.svg';
+  static const String svgsContacts = 'assets/images/svgs/contacts.svg';
+  static const String svgsEmailRound = 'assets/images/svgs/email_round.svg';
+  static const String svgsExp = 'assets/images/svgs/exp.svg';
+  static const String svgsForegroundBanner = 'assets/images/svgs/foreground_banner.svg';
+  static const String svgsGetInTouch = 'assets/images/svgs/get_in_touch.svg';
   static const String svgsGithubIcon = 'assets/images/svgs/github_icon.svg';
   static const String svgsLinkedinIcon = 'assets/images/svgs/linkedin_icon.svg';
+  static const String svgsProject = 'assets/images/svgs/project.svg';
+  static const String svgsSkills = 'assets/images/svgs/skills.svg';
+  static const String svgsUser = 'assets/images/svgs/user.svg';
+
 }

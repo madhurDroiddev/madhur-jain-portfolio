@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 class SectionContainer extends StatelessWidget {
   final Widget child;
   final String? title;
-  final IconData? titleIcon;
+  final String? titleIcon;
   final TextStyle? titleTextStyle;
   final Gradient? gradient;
   final Color? backgroundColor;
@@ -36,13 +37,6 @@ class SectionContainer extends StatelessWidget {
           vertical: 60,
         );
 
-    final decoration = BoxDecoration(
-      gradient: gradient,
-      color: gradient == null
-          ? (backgroundColor ?? Theme.of(context).colorScheme.surface)
-          : null,
-    );
-
     final defaultTitleStyle = TextStyle(
       fontSize: isDesktop ? 36 : 28,
       fontWeight: FontWeight.bold,
@@ -52,7 +46,6 @@ class SectionContainer extends StatelessWidget {
     return Container(
       width: double.infinity,
       padding: effectivePadding,
-      decoration: decoration,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -60,13 +53,14 @@ class SectionContainer extends StatelessWidget {
             Row(
               children: [
                 if (titleIcon != null)
-                  Icon(
-                    titleIcon,
+                  SvgPicture.asset(
+                    titleIcon!,
                     color: (titleTextStyle?.color) ??
                         (gradient != null
                             ? Colors.white
                             : Theme.of(context).colorScheme.primary),
-                    size: 32,
+                    width: 35,
+                    height: 35,
                   ),
                 const SizedBox(width: 16),
                 Text(

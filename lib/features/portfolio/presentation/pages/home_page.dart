@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:portfolio_app/generated/assets.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import '../../../../core/constants/app_constants.dart';
 import '../bloc/portfolio_bloc.dart';
@@ -38,22 +40,16 @@ class _HomePageState extends State<HomePage> {
   }
 
   void _scrollToSection(int index) {
-    if (index < _sectionKeys.length &&
-        _sectionKeys[index].currentContext != null) {
-      final RenderBox renderBox =
-          _sectionKeys[index].currentContext!.findRenderObject() as RenderBox;
-      final position = renderBox.localToGlobal(Offset.zero);
-      final screenHeight = MediaQuery.of(context).size.height;
-      final offset = position.dy - (screenHeight * 0.15); // 15% from top
+    if (index >= _sectionKeys.length) return;
+    final contextForKey = _sectionKeys[index].currentContext;
+    if (contextForKey == null) return;
 
-      if (_scrollController.hasClients) {
-        _scrollController.animateTo(
-          offset.clamp(0.0, _scrollController.position.maxScrollExtent),
-          duration: AppConstants.longAnimation,
-          curve: Curves.easeInOut,
-        );
-      }
-    }
+    Scrollable.ensureVisible(
+      contextForKey,
+      duration: AppConstants.longAnimation,
+      curve: Curves.easeInOut,
+      alignment: 0.1,
+    );
   }
 
   @override
@@ -102,6 +98,7 @@ class _HomePageState extends State<HomePage> {
                   return Center(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         const Icon(Icons.error, size: 64, color: Colors.red),
                         const SizedBox(height: 16),
@@ -135,26 +132,42 @@ class _HomePageState extends State<HomePage> {
         padding: EdgeInsets.zero,
         children: [
           DrawerHeader(
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               gradient: LinearGradient(
-                colors: [Colors.black, Colors.white70],
+                colors: [
+                  Theme.of(context).colorScheme.primary,
+                  Theme.of(context).colorScheme.secondary,
+                ],
               ),
             ),
-            child: const Column(
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CircleAvatar(
-                  radius: 30,
-                  backgroundColor: Colors.white,
-                  backgroundImage: AssetImage(
-                    "assets/images/profile_pic.jpg",
+                Container(
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Theme.of(context).colorScheme.surface,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Theme.of(context).shadowColor.withOpacity(0.1),
+                        blurRadius: 15,
+                        offset: const Offset(0, 8),
+                      ),
+                    ],
+                  ),
+                  child: CircleAvatar(
+                    radius: 30,
+                    backgroundColor: Theme.of(context).colorScheme.surface,
+                    backgroundImage: AssetImage(
+                      "assets/images/profile_pic.jpg",
+                    ),
                   ),
                 ),
-                SizedBox(height: 12),
+                const SizedBox(height: 12),
                 Text(
                   AppConstants.name,
                   style: TextStyle(
-                    color: Colors.white,
+                    color: Theme.of(context).colorScheme.onPrimary,
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
@@ -162,7 +175,10 @@ class _HomePageState extends State<HomePage> {
                 Text(
                   AppConstants.title,
                   style: TextStyle(
-                    color: Colors.white70,
+                    color: Theme.of(context)
+                        .colorScheme
+                        .onPrimary
+                        .withOpacity(0.8),
                     fontSize: 14,
                   ),
                 ),
@@ -170,29 +186,69 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           ListTile(
-            leading: const Icon(Icons.person),
+            leading: SvgPicture.asset(
+              Assets.svgsUser,
+              width: 20,
+              height: 20,
+            ),
             title: const Text('About'),
-            onTap: () => _scrollToSection(0),
+            onTap: () {
+              Navigator.of(context).pop();
+              Future.delayed(
+                  const Duration(milliseconds: 200), () => _scrollToSection(0));
+            },
           ),
           ListTile(
-            leading: const Icon(Icons.work),
+            leading: SvgPicture.asset(
+              Assets.svgsExp,
+              width: 20,
+              height: 20,
+            ),
             title: const Text('Experience'),
-            onTap: () => _scrollToSection(1),
+            onTap: () {
+              Navigator.of(context).pop();
+              Future.delayed(
+                  const Duration(milliseconds: 200), () => _scrollToSection(1));
+            },
           ),
           ListTile(
-            leading: const Icon(Icons.code),
+            leading: SvgPicture.asset(
+              Assets.svgsSkills,
+              width: 20,
+              height: 20,
+            ),
             title: const Text('Skills'),
-            onTap: () => _scrollToSection(2),
+            onTap: () {
+              Navigator.of(context).pop();
+              Future.delayed(
+                  const Duration(milliseconds: 200), () => _scrollToSection(2));
+            },
           ),
           ListTile(
-            leading: const Icon(Icons.folder),
+            leading: SvgPicture.asset(
+              Assets.svgsProject,
+              width: 20,
+              height: 20,
+            ),
             title: const Text('Projects'),
-            onTap: () => _scrollToSection(3),
+            onTap: () {
+              Navigator.of(context).pop();
+              Future.delayed(
+                  const Duration(milliseconds: 200), () => _scrollToSection(3));
+            },
           ),
           ListTile(
-            leading: const Icon(Icons.contact_mail),
+            leading: SvgPicture.asset(
+              Assets.svgsContacts,
+              width: 15,
+              height: 15,
+            ),
             title: const Text('Contact'),
-            onTap: () => _scrollToSection(4),
+            onTap: () {
+              Navigator.of(context).pop();
+              Future.delayed(
+                  const Duration(milliseconds: 200), () => _scrollToSection(4));
+            },
           ),
         ],
       ),
@@ -218,11 +274,24 @@ class _HomePageState extends State<HomePage> {
             padding: const EdgeInsets.all(20),
             child: Column(
               children: [
-                CircleAvatar(
-                  radius: 50,
-                  backgroundColor: const Color(AppConstants.primaryColor),
-                  backgroundImage: AssetImage(
-                    "assets/images/profile_pic.jpg",
+                Container(
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Theme.of(context).colorScheme.surface,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Theme.of(context).shadowColor.withOpacity(0.1),
+                        blurRadius: 15,
+                        offset: const Offset(0, 8),
+                      ),
+                    ],
+                  ),
+                  child: CircleAvatar(
+                    radius: 50,
+                    backgroundColor: const Color(AppConstants.primaryColor),
+                    backgroundImage: AssetImage(
+                      "assets/images/profile_pic.jpg",
+                    ),
                   ),
                 ),
                 const SizedBox(height: 16),
@@ -250,11 +319,11 @@ class _HomePageState extends State<HomePage> {
             child: ListView(
               padding: const EdgeInsets.symmetric(vertical: 16),
               children: [
-                _buildNavItem('About', Icons.person, 0),
-                _buildNavItem('Experience', Icons.work, 1),
-                _buildNavItem('Skills', Icons.code, 2),
-                _buildNavItem('Projects', Icons.folder, 3),
-                _buildNavItem('Contact', Icons.contact_mail, 4),
+                _buildNavItem('About', Assets.svgsUser, 0),
+                _buildNavItem('Experience', Assets.svgsExp, 1),
+                _buildNavItem('Skills', Assets.svgsSkills, 2),
+                _buildNavItem('Projects', Assets.svgsProject, 3),
+                _buildNavItem('Contact', Assets.svgsContacts, 4),
               ],
             ),
           ),
@@ -278,9 +347,13 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _buildNavItem(String title, IconData icon, int index) {
+  Widget _buildNavItem(String title, String icon, int index) {
     return ListTile(
-      leading: Icon(icon),
+      leading: SvgPicture.asset(
+        icon,
+        width: 20,
+        height: 20,
+      ),
       title: Text(title),
       selected: _currentIndex == index,
       onTap: () {
@@ -296,6 +369,8 @@ class _HomePageState extends State<HomePage> {
     return SingleChildScrollView(
       controller: _scrollController,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           // Header Section
           HeaderWidget(contactInfo: state.contactInfo),
